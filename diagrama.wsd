@@ -1,0 +1,88 @@
+@startuml Clases
+
+class Casilla {
+    - simbolo: char
+    - esEditable: bool
+    - posX: int
+    - posY: int
+
+    + Casilla(_simbolo: char, _posX: int, _posY: int, _editable: bool)
+    + Casilla(_simbolo: char, _posX: int, _posY: int)
+    + asignarSimbolo(simbolo: char): void
+    + bloquear(): void
+    + obtenerSimbolo(): char
+    + obtenerPosX(): int
+    + obtenerPosY(): int
+}
+
+class Tablero {
+    - <<final>> fila: int
+    - <<final>> columna: int
+    - casillas: Casilla[][]
+
+    + Tablero()
+    + obtenerTablero(): Casilla[][]
+    + pintarTablero(): void
+    - bloquearCasillas(): void
+}
+
+class Utilidades <<utility>> {
+    {static} + random(min: int, max: int): int
+    {static} + mostrarMensaje(mensaje: String): void
+    - Utilidades() {delete}
+}
+
+class Game {
+    - jugadores: LinkedList<Jugador>
+}
+
+class Jugador {
+    - nombre: String
+    - fichas: ManejadorFichas
+    - movimientos: int
+    + obtenerNombre(): String
+    + obtenerMovimientos(): int
+    + aumentarMov(): void
+}
+
+class ManejadorFichas {
+    - fichas: LinkedList<Ficha>
+}
+
+class Ficha {
+    - simbolo: char
+    - puntos: int
+
+    + Ficha()
+    + Ficha(_simbolo: char, _puntos: int)
+    + obtenerPuntos(): int
+    + obtenerSimbolo(): char
+}
+
+class Reporte {
+
+}
+
+class LinkedList<T> {
+
+}
+
+class Pila<T> {
+
+}
+
+class Cola<T> {
+
+}
+
+ManejadorFichas o-- "*" Ficha : contiene varias
+Game o-- "2" Jugador : contiene
+Tablero o-- "*" Casilla: contiene varias
+Tablero -- Utilidades
+Game --> Tablero
+Jugador *-- ManejadorFichas
+Game --> Reporte
+Game -- LinkedList
+ManejadorFichas -- LinkedList
+Reporte -- LinkedList
+@enduml
