@@ -1,0 +1,11 @@
+{
+"rules": [
+{
+"primary-output": "CMakeFiles/scrabble.dir/src/util/Utilidades.cpp.o",
+"requires": [
+]
+}
+],
+"version": 0,
+"revision": 0
+}

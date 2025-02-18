@@ -1,0 +1,7 @@
+ninja_dyndep_version = 1.0
+build CMakeFiles/scrabble.dir/main.cpp.o: dyndep
+
+build CMakeFiles/scrabble.dir/src/Casilla.cpp.o: dyndep
+
+build CMakeFiles/scrabble.dir/src/Tablero.cpp.o: dyndep
+

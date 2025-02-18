@@ -1,0 +1,16 @@
+# ninja log v6
+101	124	1739835808304383097	CMakeFiles/scrabble.dir/src/Casilla.cpp.o	d242876c426f68b5
+90	95	1739835954566842040	CMakeFiles/scrabble.dir/src/Tablero.cpp.o.modmap	9d548391acfccfc5
+90	95	1739835954566842040	CMakeFiles/scrabble.dir/main.cpp.o.modmap	9d548391acfccfc5
+90	95	1739835954566842040	/home/giovani/Documentos/Tareas/1S2025/EDD/Proyectos/scrabble/cmake-build-debug/CMakeFiles/scrabble.dir/CXXModules.json	9d548391acfccfc5
+90	95	1739835954566842040	CMakeFiles/scrabble.dir/src/Casilla.cpp.o.modmap	9d548391acfccfc5
+90	95	1739835954566842040	CMakeFiles/scrabble.dir/CXX.dd	9d548391acfccfc5
+699	778	1739835955174869179	scrabble	85c36dc99261b9fb
+93	100	1739835861498715135	CMakeFiles/scrabble.dir/src/util/Utilidades.cpp.o.modmap	1f2cc383ba7c7a23
+3	14	1739835808204378732	CMakeFiles/scrabble.dir/src/Casilla.cpp.o.ddi	5086ad32d1b161e2
+2	90	1739835954478838112	CMakeFiles/scrabble.dir/src/Tablero.cpp.o.ddi	c28fe8b514a4cb16
+99	137	1739835282971024035	CMakeFiles/scrabble.dir/src/util/Utilidades.cpp.o	a1304ff83db09811
+2	12	1739835808204378732	CMakeFiles/scrabble.dir/main.cpp.o.ddi	1d1de7f5e39e92d5
+96	699	1739835954570842218	CMakeFiles/scrabble.dir/src/Tablero.cpp.o	eeead84c8205e13e
+101	123	1739835808304383097	CMakeFiles/scrabble.dir/main.cpp.o	e60784dc0fe94b17
+2	25	1739835282875020534	CMakeFiles/scrabble.dir/src/util/Utilidades.cpp.o.ddi	f42618c1abd636bb
