@@ -16,22 +16,21 @@ class Casilla
 {
 private:
     char simbolo;
-    int posX;
-    int posY;
+
+
     bool esEditable;
 
 public:
-    Casilla(char _simbolo, int pos_x, int pos_y);
 
-    Casilla(int pos_x, int pos_y);
 
-    ~Casilla() = default;
+    explicit Casilla(char _simbolo);
+    Casilla();
 
     void asignar_simbolo(char _simbolo);
     void bloquear();
-    char obtenerSimbolo();
-    int obtenerPosX();
-    int obtenerPosY();
+    [[nodiscard]] char obtenerSimbolo() const;
+
+
 };
 # 4 "/home/giovani/Documentos/Tareas/1S2025/EDD/Proyectos/scrabble/src/../include/Tablero.h" 2
 
@@ -43,6 +42,7 @@ private:
     Casilla* casillas[FILAS][COLUMNAS];
     void iniciar_tablero();
     void bloquear_casilla();
+    static void pintarEncabezado();
 
 public:
     Tablero();
@@ -43494,14 +43494,15 @@ Tablero::Tablero()
 
 void Tablero::iniciar_tablero()
 {
-    for (int i = 0; i < FILAS; ++i)
+    for (int i = 0; i < FILAS; i++)
     {
-        for (int j = 0; j < COLUMNAS; ++j)
+        for (int j = 0; j < COLUMNAS; j++)
         {
-            casillas[i][j] = new Casilla('.', i, j);
+
+
+            casillas[i][j] = new Casilla(32);
         }
     }
-
     bloquear_casilla();
 }
 
@@ -43513,21 +43514,45 @@ void Tablero::bloquear_casilla()
     {
         int fila = rand() % FILAS;
         int col = rand() % COLUMNAS;
-        if (casillas[fila][col]->obtenerSimbolo() == '.')
+        if (casillas[fila][col]->obtenerSimbolo() == 32)
         {
-            casillas[fila][col] = new Casilla(fila, col);
+            casillas[fila][col]->asignar_simbolo('#');
+            casillas[fila][col]->bloquear();
+
             contador++;
         }
     }
 }
 
+void Tablero::pintarEncabezado()
+{
+    for (int i = 0; i < FILAS; ++i)
+    {
+        if (i == 0)
+        {
+            std::cout << "\t " << i + 1;
+        }
+        else if (i < 9)
+        {
+            std::cout << "   " << i + 1;
+        }
+        else
+        {
+            std::cout << "  " << i + 1;
+        }
+    }
+    std::cout << std::endl;
+}
+
 void Tablero::pintar_tablero()
 {
+    pintarEncabezado();
     for (int i = 0; i < FILAS; i++)
     {
+        std::cout << i + 1 << "\t";
         for (int j = 0; j < COLUMNAS; j++)
         {
-            std::cout << casillas[i][j]->obtenerSimbolo() << " ";
+            std::cout << "[" << casillas[i][j]->obtenerSimbolo() << "]" << " ";
         }
         std::cout << std::endl;
     }
@@ -43540,6 +43565,7 @@ Tablero::~Tablero()
         for (int j = 0; j < COLUMNAS; j++)
         {
             delete casillas[i][j];
+            casillas[i][j] = nullptr;
         }
     }
 }

@@ -11,12 +11,12 @@ void Jugador::aumentarMovimiento()
     this->movimientos++;
 }
 
-std::string Jugador::obtenerNombre()
+[[nodiscard]] std::string Jugador::obtenerNombre() const
 {
-    return std::string(this->nombre);
+    return this->nombre;
 }
 
-int Jugador::obtenerMovimientos()
+[[nodiscard]] int Jugador::obtenerMovimientos() const
 {
     return this->movimientos;
 }

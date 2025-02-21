@@ -13,40 +13,36 @@ class Casilla
 {
 private:
     char simbolo;
-    int posX;
-    int posY;
+
+
     bool esEditable;
 
 public:
-    Casilla(char _simbolo, int pos_x, int pos_y);
 
-    Casilla(int pos_x, int pos_y);
 
-    ~Casilla() = default;
+    explicit Casilla(char _simbolo);
+    Casilla();
 
     void asignar_simbolo(char _simbolo);
     void bloquear();
-    char obtenerSimbolo();
-    int obtenerPosX();
-    int obtenerPosY();
+    [[nodiscard]] char obtenerSimbolo() const;
+
+
 };
 # 2 "/home/giovani/Documentos/Tareas/1S2025/EDD/Proyectos/scrabble/src/Casilla.cpp" 2
-
-Casilla::Casilla(char _simbolo, int pos_x, int pos_y)
-{
-    this->simbolo = _simbolo;
-    this->posX = pos_x;
-    this->posY = pos_y;
-    this->esEditable = true;
-}
-
-Casilla::Casilla(int pos_x, int pos_y)
+# 29 "/home/giovani/Documentos/Tareas/1S2025/EDD/Proyectos/scrabble/src/Casilla.cpp"
+Casilla::Casilla()
 {
     this->simbolo = '#';
-    this->posX = pos_x;
-    this->posY = pos_y;
+    this->esEditable = false;
+}
+
+Casilla::Casilla(char _simbolo)
+{
+    this->simbolo = _simbolo;
     this->esEditable = true;
 }
+
 
 void Casilla::asignar_simbolo(char _simbolo)
 {
@@ -58,17 +54,7 @@ void Casilla::bloquear()
     this->esEditable = false;
 }
 
-char Casilla::obtenerSimbolo()
+char Casilla::obtenerSimbolo() const
 {
     return this->simbolo;
-}
-
-int Casilla::obtenerPosX()
-{
-    return this->posX;
-}
-
-int Casilla::obtenerPosY()
-{
-    return this->posY;
 }

@@ -3,16 +3,12 @@
 class Casilla {
     - simbolo: char
     - esEditable: bool
-    - posX: int
-    - posY: int
 
-    + Casilla(_simbolo: char, _posX: int, _posY: int, _editable: bool)
-    + Casilla(_simbolo: char, _posX: int, _posY: int)
+    + Casilla(_simbolo: char)
+    + Casilla()
     + asignarSimbolo(simbolo: char): void
     + bloquear(): void
     + obtenerSimbolo(): char
-    + obtenerPosX(): int
-    + obtenerPosY(): int
 }
 
 class Tablero {
@@ -26,19 +22,14 @@ class Tablero {
     - bloquearCasillas(): void
 }
 
-class Utilidades <<utility>> {
-    {static} + random(min: int, max: int): int
-    {static} + mostrarMensaje(mensaje: String): void
-    - Utilidades() {delete}
-}
-
 class Game {
+    - tablero: Tablero
     - jugadores: LinkedList<Jugador>
 }
 
 class Jugador {
     - nombre: String
-    - fichas: ManejadorFichas
+    - fichas: LinkedList<Ficha>
     - movimientos: int
     + obtenerNombre(): String
     + obtenerMovimientos(): int
@@ -61,28 +52,58 @@ class Ficha {
 
 class Reporte {
 
+
+}
+
+struct Node<T> {
+    + valor : T
+    + siguiente : Node*
 }
 
 class LinkedList<T> {
+    - front: Node
+    - _size : int
 
+    + LinkedList()
+    + empty() : bool
+    + size() : int
+    + search (index : int): T
+    + deleteAtHead() : void
+    + deleteAtEnd() : void
+    + insertAtHead(data: T) : void
+    + insertAtEnd(data : T) : void
+    + deleteAt(index : int): bool
 }
 
-class Pila<T> {
 
+class Queue<T> {
+    - front : Node
+    - _size : int
+
+    + Queue()
+    + enqueue(data : T) : void
+    + dequeue() : T
+    + peek() : T
+    + empty() : bool
+    + size() : int
 }
 
-class Cola<T> {
+class GestionArchivos {
+    - path: String;
 
+    + leerArchivo();
 }
 
 ManejadorFichas o-- "*" Ficha : contiene varias
-Game o-- "2" Jugador : contiene
+Game *-- "2..*" Jugador : contiene
 Tablero o-- "*" Casilla: contiene varias
-Tablero -- Utilidades
 Game --> Tablero
 Jugador *-- ManejadorFichas
 Game --> Reporte
 Game -- LinkedList
 ManejadorFichas -- LinkedList
 Reporte -- LinkedList
+LinkedList *-- Node : contiene un
+Queue *-- Node : contiene un
+
 @enduml

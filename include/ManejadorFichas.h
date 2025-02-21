@@ -1,27 +1,15 @@
 #ifndef MANEJADORFICHAS_H
 #define MANEJADORFICHAS_H
 #include "Ficha.h"
+#include "Jugador.h"
+#include "estructuras/LinkedList.h"
 
 class ManejadorFichas
 {
 private:
-    Ficha* fichas[5];
+    LinkedList<Ficha> lista_fichas;
 
 public:
-    ManejadorFichas()
-    {
-        for (int i = 0; i < 5; ++i)
-        {
-            fichas[i] = new Ficha();
-        }
-    }
-
-    ~ManejadorFichas()
-    {
-        for (int i = 0; i < 5; ++i)
-        {
-            delete fichas[i];
-        }
-    }
+    explicit ManejadorFichas(LinkedList<Ficha> _lista);
 };
 #endif //MANEJADORFICHAS_H

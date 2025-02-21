@@ -10,6 +10,7 @@ private:
     Casilla* casillas[FILAS][COLUMNAS];
     void iniciar_tablero();
     void bloquear_casilla();
+    static void pintarEncabezado();
 
 public:
     Tablero();

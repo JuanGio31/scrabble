@@ -11,14 +11,15 @@ Tablero::Tablero()
 
 void Tablero::iniciar_tablero()
 {
-    for (int i = 0; i < FILAS; ++i)
+    for (int i = 0; i < FILAS; i++)
     {
-        for (int j = 0; j < COLUMNAS; ++j)
+        for (int j = 0; j < COLUMNAS; j++)
         {
-            casillas[i][j] = new Casilla('.', i, j);
+            //32 representa un espacio en blanco
+            //casillas[i][j] = new Casilla(32, i, j);
+            casillas[i][j] = new Casilla(32);
         }
     }
-
     bloquear_casilla();
 }
 
@@ -30,21 +31,45 @@ void Tablero::bloquear_casilla()
     {
         int fila = rand() % FILAS;
         int col = rand() % COLUMNAS;
-        if (casillas[fila][col]->obtenerSimbolo() == '.')
+        if (casillas[fila][col]->obtenerSimbolo() == 32) //32 representa un espacio
         {
-            casillas[fila][col] = new Casilla(fila, col);
+            casillas[fila][col]->asignar_simbolo('#');
+            casillas[fila][col]->bloquear();
+            //casillas[fila][col] = new Casilla(); //new Casilla(fila, col);
             contador++;
         }
     }
 }
 
+void Tablero::pintarEncabezado()
+{
+    for (int i = 0; i < FILAS; ++i)
+    {
+        if (i == 0)
+        {
+            std::cout << "\t " << i + 1;
+        }
+        else if (i < 9)
+        {
+            std::cout << "   " << i + 1;
+        }
+        else
+        {
+            std::cout << "  " << i + 1;
+        }
+    }
+    std::cout << std::endl;
+}
+
 void Tablero::pintar_tablero()
 {
+    pintarEncabezado();
     for (int i = 0; i < FILAS; i++)
     {
+        std::cout << i + 1 << "\t";
         for (int j = 0; j < COLUMNAS; j++)
         {
-            std::cout << casillas[i][j]->obtenerSimbolo() << " ";
+            std::cout << "[" << casillas[i][j]->obtenerSimbolo() << "]" << " ";
         }
         std::cout << std::endl;
     }
@@ -57,6 +82,7 @@ Tablero::~Tablero()
         for (int j = 0; j < COLUMNAS; j++)
         {
             delete casillas[i][j];
+            casillas[i][j] = nullptr;
         }
     }
 }

@@ -14,4 +14,11 @@ add_executable(scrabble main.cpp
         include/Jugador.h
         src/ManejadorFichas.cpp
         include/ManejadorFichas.h
+        src/Archivo.cpp
+        src/Game.cpp
+        include/Game.h
+        include/estructuras/Queue.h
+        src/estructuras/Queue.cpp
+        include/estructuras/LinkedList.h
+        src/estructuras/LinkedList.cpp
 )
