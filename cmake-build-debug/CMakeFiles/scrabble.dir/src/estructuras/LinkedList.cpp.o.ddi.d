@@ -1,7 +1,7 @@
-CMakeFiles/scrabble.dir/src/estructuras/LinkedListG.cpp.o.ddi: \
- /home/giovani/Documentos/Tareas/1S2025/EDD/Proyectos/scrabble/src/estructuras/LinkedListG.cpp \
+CMakeFiles/scrabble.dir/src/estructuras/LinkedList.cpp.o.ddi: \
+ /home/giovani/Documentos/Tareas/1S2025/EDD/Proyectos/scrabble/src/estructuras/LinkedList.cpp \
  /usr/include/stdc-predef.h \
- /home/giovani/Documentos/Tareas/1S2025/EDD/Proyectos/scrabble/src/estructuras/../../include/estructuras/LinkedListG.h \
+ /home/giovani/Documentos/Tareas/1S2025/EDD/Proyectos/scrabble/src/estructuras/../../include/estructuras/LinkedList.h \
  /usr/include/c++/14/stdexcept /usr/include/c++/14/exception \
  /usr/include/x86_64-linux-gnu/c++/14/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/14/bits/os_defines.h \

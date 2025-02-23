@@ -38,6 +38,8 @@ public:
     bool empty() const;
 
     int size() const;
+
+    bool contains(T object);
 };
 
 #endif //LINKEDLIST_H

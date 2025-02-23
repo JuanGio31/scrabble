@@ -199,7 +199,22 @@ build CMakeFiles/scrabble.dir/src/estructuras/LinkedList.cpp.o: CXX_COMPILER__sc
   OBJECT_FILE_DIR = CMakeFiles/scrabble.dir/src/estructuras
   dyndep = CMakeFiles/scrabble.dir/CXX.dd
 
-build CMakeFiles/scrabble.dir/CXX.dd | /home/giovani/Documentos/Tareas/1S2025/EDD/Proyectos/scrabble/cmake-build-debug/CMakeFiles/scrabble.dir/CXXModules.json CMakeFiles/scrabble.dir/main.cpp.o.modmap CMakeFiles/scrabble.dir/src/Casilla.cpp.o.modmap CMakeFiles/scrabble.dir/src/Tablero.cpp.o.modmap CMakeFiles/scrabble.dir/src/Ficha.cpp.o.modmap CMakeFiles/scrabble.dir/src/Jugador.cpp.o.modmap CMakeFiles/scrabble.dir/src/ManejadorFichas.cpp.o.modmap CMakeFiles/scrabble.dir/src/Archivo.cpp.o.modmap CMakeFiles/scrabble.dir/src/Game.cpp.o.modmap CMakeFiles/scrabble.dir/src/estructuras/Queue.cpp.o.modmap CMakeFiles/scrabble.dir/src/estructuras/LinkedList.cpp.o.modmap: CXX_DYNDEP__scrabble_Debug CMakeFiles/scrabble.dir/main.cpp.o.ddi CMakeFiles/scrabble.dir/src/Casilla.cpp.o.ddi CMakeFiles/scrabble.dir/src/Tablero.cpp.o.ddi CMakeFiles/scrabble.dir/src/Ficha.cpp.o.ddi CMakeFiles/scrabble.dir/src/Jugador.cpp.o.ddi CMakeFiles/scrabble.dir/src/ManejadorFichas.cpp.o.ddi CMakeFiles/scrabble.dir/src/Archivo.cpp.o.ddi CMakeFiles/scrabble.dir/src/Game.cpp.o.ddi CMakeFiles/scrabble.dir/src/estructuras/Queue.cpp.o.ddi CMakeFiles/scrabble.dir/src/estructuras/LinkedList.cpp.o.ddi | /home/giovani/Documentos/Tareas/1S2025/EDD/Proyectos/scrabble/cmake-build-debug/CMakeFiles/scrabble.dir/CXXDependInfo.json
+build CMakeFiles/scrabble.dir/src/utilidades/Utilidad.cpp.o.ddi: CXX_SCAN__scrabble_Debug /home/giovani/Documentos/Tareas/1S2025/EDD/Proyectos/scrabble/src/utilidades/Utilidad.cpp || cmake_object_order_depends_target_scrabble
+  DEP_FILE = CMakeFiles/scrabble.dir/src/utilidades/Utilidad.cpp.o.ddi.d
+  DYNDEP_INTERMEDIATE_FILE = CMakeFiles/scrabble.dir/src/utilidades/Utilidad.cpp.o.ddi
+  FLAGS = -g -std=gnu++20 -fdiagnostics-color=always
+  OBJ_FILE = CMakeFiles/scrabble.dir/src/utilidades/Utilidad.cpp.o
+  PREPROCESSED_OUTPUT_FILE = CMakeFiles/scrabble.dir/src/utilidades/Utilidad.cpp.o.ddi.i
+
+build CMakeFiles/scrabble.dir/src/utilidades/Utilidad.cpp.o: CXX_COMPILER__scrabble_scanned_Debug /home/giovani/Documentos/Tareas/1S2025/EDD/Proyectos/scrabble/src/utilidades/Utilidad.cpp | CMakeFiles/scrabble.dir/src/utilidades/Utilidad.cpp.o.modmap || cmake_object_order_depends_target_scrabble CMakeFiles/scrabble.dir/CXX.dd
+  DEP_FILE = CMakeFiles/scrabble.dir/src/utilidades/Utilidad.cpp.o.d
+  DYNDEP_MODULE_MAP_FILE = CMakeFiles/scrabble.dir/src/utilidades/Utilidad.cpp.o.modmap
+  FLAGS = -g -std=gnu++20 -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles/scrabble.dir
+  OBJECT_FILE_DIR = CMakeFiles/scrabble.dir/src/utilidades
+  dyndep = CMakeFiles/scrabble.dir/CXX.dd
+
+build CMakeFiles/scrabble.dir/CXX.dd | /home/giovani/Documentos/Tareas/1S2025/EDD/Proyectos/scrabble/cmake-build-debug/CMakeFiles/scrabble.dir/CXXModules.json CMakeFiles/scrabble.dir/main.cpp.o.modmap CMakeFiles/scrabble.dir/src/Casilla.cpp.o.modmap CMakeFiles/scrabble.dir/src/Tablero.cpp.o.modmap CMakeFiles/scrabble.dir/src/Ficha.cpp.o.modmap CMakeFiles/scrabble.dir/src/Jugador.cpp.o.modmap CMakeFiles/scrabble.dir/src/ManejadorFichas.cpp.o.modmap CMakeFiles/scrabble.dir/src/Archivo.cpp.o.modmap CMakeFiles/scrabble.dir/src/Game.cpp.o.modmap CMakeFiles/scrabble.dir/src/estructuras/Queue.cpp.o.modmap CMakeFiles/scrabble.dir/src/estructuras/LinkedList.cpp.o.modmap CMakeFiles/scrabble.dir/src/utilidades/Utilidad.cpp.o.modmap: CXX_DYNDEP__scrabble_Debug CMakeFiles/scrabble.dir/main.cpp.o.ddi CMakeFiles/scrabble.dir/src/Casilla.cpp.o.ddi CMakeFiles/scrabble.dir/src/Tablero.cpp.o.ddi CMakeFiles/scrabble.dir/src/Ficha.cpp.o.ddi CMakeFiles/scrabble.dir/src/Jugador.cpp.o.ddi CMakeFiles/scrabble.dir/src/ManejadorFichas.cpp.o.ddi CMakeFiles/scrabble.dir/src/Archivo.cpp.o.ddi CMakeFiles/scrabble.dir/src/Game.cpp.o.ddi CMakeFiles/scrabble.dir/src/estructuras/Queue.cpp.o.ddi CMakeFiles/scrabble.dir/src/estructuras/LinkedList.cpp.o.ddi CMakeFiles/scrabble.dir/src/utilidades/Utilidad.cpp.o.ddi | /home/giovani/Documentos/Tareas/1S2025/EDD/Proyectos/scrabble/cmake-build-debug/CMakeFiles/scrabble.dir/CXXDependInfo.json
 
 
 # =============================================================================
@@ -209,7 +224,7 @@ build CMakeFiles/scrabble.dir/CXX.dd | /home/giovani/Documentos/Tareas/1S2025/ED
 #############################################
 # Link the executable scrabble
 
-build scrabble: CXX_EXECUTABLE_LINKER__scrabble_Debug CMakeFiles/scrabble.dir/main.cpp.o CMakeFiles/scrabble.dir/src/Casilla.cpp.o CMakeFiles/scrabble.dir/src/Tablero.cpp.o CMakeFiles/scrabble.dir/src/Ficha.cpp.o CMakeFiles/scrabble.dir/src/Jugador.cpp.o CMakeFiles/scrabble.dir/src/ManejadorFichas.cpp.o CMakeFiles/scrabble.dir/src/Archivo.cpp.o CMakeFiles/scrabble.dir/src/Game.cpp.o CMakeFiles/scrabble.dir/src/estructuras/Queue.cpp.o CMakeFiles/scrabble.dir/src/estructuras/LinkedList.cpp.o
+build scrabble: CXX_EXECUTABLE_LINKER__scrabble_Debug CMakeFiles/scrabble.dir/main.cpp.o CMakeFiles/scrabble.dir/src/Casilla.cpp.o CMakeFiles/scrabble.dir/src/Tablero.cpp.o CMakeFiles/scrabble.dir/src/Ficha.cpp.o CMakeFiles/scrabble.dir/src/Jugador.cpp.o CMakeFiles/scrabble.dir/src/ManejadorFichas.cpp.o CMakeFiles/scrabble.dir/src/Archivo.cpp.o CMakeFiles/scrabble.dir/src/Game.cpp.o CMakeFiles/scrabble.dir/src/estructuras/Queue.cpp.o CMakeFiles/scrabble.dir/src/estructuras/LinkedList.cpp.o CMakeFiles/scrabble.dir/src/utilidades/Utilidad.cpp.o
   FLAGS = -g
   OBJECT_DIR = CMakeFiles/scrabble.dir
   POST_BUILD = :

@@ -21,4 +21,6 @@ add_executable(scrabble main.cpp
         src/estructuras/Queue.cpp
         include/estructuras/LinkedList.h
         src/estructuras/LinkedList.cpp
+        include/utilidades/Utilidad.h
+        src/utilidades/Utilidad.cpp
 )

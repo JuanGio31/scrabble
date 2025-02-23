@@ -17,5 +17,7 @@ build CMakeFiles/scrabble.dir/src/Game.cpp.o: dyndep
 
 build CMakeFiles/scrabble.dir/src/estructuras/Queue.cpp.o: dyndep
 
-build CMakeFiles/scrabble.dir/src/estructuras/LinkedListG.cpp.o: dyndep
+build CMakeFiles/scrabble.dir/src/estructuras/LinkedList.cpp.o: dyndep
+
+build CMakeFiles/scrabble.dir/src/utilidades/Utilidad.cpp.o: dyndep
 

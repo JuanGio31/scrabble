@@ -5,32 +5,31 @@
 
 Tablero::Tablero()
 {
-    srand(time(0));
     iniciar_tablero();
 }
 
 void Tablero::iniciar_tablero()
 {
-    for (int i = 0; i < FILAS; i++)
+    for (auto& casilla : casillas)
     {
-        for (int j = 0; j < COLUMNAS; j++)
+        for (auto& j : casilla)
         {
             //32 representa un espacio en blanco
             //casillas[i][j] = new Casilla(32, i, j);
-            casillas[i][j] = new Casilla(32);
+            j = new Casilla(32);
         }
     }
     bloquear_casilla();
 }
 
-void Tablero::bloquear_casilla()
+void Tablero::bloquear_casilla() const
 {
-    static const int INUTILIZABLES = 10;
+    static constexpr int INUTILIZABLES = 10;
     int contador = 0;
     while (contador < INUTILIZABLES)
     {
-        int fila = rand() % FILAS;
-        int col = rand() % COLUMNAS;
+        int fila = Utilidad::getRandomInt(1, FILAS) - 1; //rand() % FILAS;
+        int col = Utilidad::getRandomInt(1, COLUMNAS) - 1;; //rand() % COLUMNAS;
         if (casillas[fila][col]->obtenerSimbolo() == 32) //32 representa un espacio
         {
             casillas[fila][col]->asignar_simbolo('#');
@@ -41,7 +40,7 @@ void Tablero::bloquear_casilla()
     }
 }
 
-void Tablero::pintarEncabezado()
+void Tablero::pintar_encabezado()
 {
     for (int i = 0; i < FILAS; ++i)
     {
@@ -61,9 +60,9 @@ void Tablero::pintarEncabezado()
     std::cout << std::endl;
 }
 
-void Tablero::pintar_tablero()
+void Tablero::pintar_tablero() const
 {
-    pintarEncabezado();
+    pintar_encabezado();
     for (int i = 0; i < FILAS; i++)
     {
         std::cout << i + 1 << "\t";
@@ -77,12 +76,12 @@ void Tablero::pintar_tablero()
 
 Tablero::~Tablero()
 {
-    for (int i = 0; i < FILAS; i++)
+    for (auto& casilla : casillas)
     {
-        for (int j = 0; j < COLUMNAS; j++)
+        for (auto& j : casilla)
         {
-            delete casillas[i][j];
-            casillas[i][j] = nullptr;
+            delete j;
+            j = nullptr;
         }
     }
 }

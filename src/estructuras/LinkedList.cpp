@@ -25,6 +25,20 @@ int LinkedList<T>::size() const
     return this->_size;
 }
 
+template <typename T>
+bool LinkedList<T>::contains(T object)
+{
+    auto* current = this->head;
+    while (current)
+    {
+        if (current->value == object)
+        {
+            return true;
+        }
+    }
+    return false;
+}
+
 /**
  * Metodo para agregar un elemento al final de la lista.
  * @param data elemento a agregar a la lista.
@@ -43,7 +57,10 @@ void LinkedList<T>::insertAtEnd(T data)
     else
     {
         auto* pointer = this->head;
-        while (pointer->next) { pointer = pointer->next; }
+        while (pointer->next)
+        {
+            pointer = pointer->next;
+        }
         pointer->next = temp;
     }
     ++this->_size;
@@ -80,7 +97,8 @@ void LinkedList<T>::insertAtHead(T data)
 template <typename T>
 void LinkedList<T>::deleteAtHead()
 {
-    if (this->head == nullptr) throw std::runtime_error("Lista vacia");
+    if (this->head == nullptr)
+        throw std::runtime_error("Lista vacia");
 
     auto* temp = this->head;
     this->head = this->head->next;
@@ -94,7 +112,8 @@ void LinkedList<T>::deleteAtHead()
 template <typename T>
 void LinkedList<T>::deleteAtEnd()
 {
-    if (this->head == nullptr) throw std::runtime_error("Lista vacia");
+    if (this->head == nullptr)
+        throw std::runtime_error("Lista vacia");
 
     if (this->head->next == nullptr)
     {
@@ -104,7 +123,8 @@ void LinkedList<T>::deleteAtEnd()
     else
     {
         auto* current = this->head;
-        while (current->next->next != nullptr) current = current->next;
+        while (current->next->next != nullptr)
+            current = current->next;
         delete current->next;
         current->next = nullptr;
     }
@@ -119,7 +139,8 @@ void LinkedList<T>::deleteAtEnd()
 template <typename T>
 T LinkedList<T>::search(int index)
 {
-    if (this->head == nullptr) throw std::runtime_error("Lista vacia");
+    if (this->head == nullptr)
+        throw std::runtime_error("Lista vacia");
 
     auto* current = this->head;
     int count = 0;
@@ -168,7 +189,7 @@ LinkedList<T>::~LinkedList()
 template <typename T>
 bool LinkedList<T>::deleteAt(int index)
 {
-    //verificar si el indice esta dentro del rango
+    // verificar si el indice esta dentro del rango
     if (index < 0 || index > _size)
     {
         return false;
@@ -186,7 +207,7 @@ bool LinkedList<T>::deleteAt(int index)
     else
     {
         Node* current = this->head;
-        //Recorrer hasta el nodo anterior al que se desea eliminar
+        // Recorrer hasta el nodo anterior al que se desea eliminar
         for (int i = 0; i < index - 1; ++i)
         {
             current = current->next;

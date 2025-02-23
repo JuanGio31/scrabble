@@ -9,13 +9,16 @@ class Jugador
 {
 private:
     std::string nombre;
-    //ManejadorFichas fichas;
+    // ManejadorFichas fichas;
+
     int movimientos;
 
 public:
-    explicit Jugador(const std::string& _nombre);
-    [[nodiscard]] std::string obtenerNombre() const;
-    [[nodiscard]] int obtenerMovimientos() const;
-    void aumentarMovimiento();
+    explicit Jugador();
+    explicit Jugador(std::string& _nombre);
+    [[nodiscard]] std::string obtener_nombre() const;
+    [[nodiscard]] int obtener_movimientos() const;
+    void aumentar_movimiento();
+    void set_nombre(std::string _nombre);
 };
-#endif //JUGADOR_H
+#endif // JUGADOR_H

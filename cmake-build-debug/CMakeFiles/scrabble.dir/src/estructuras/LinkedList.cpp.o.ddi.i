@@ -1,14 +1,14 @@
-# 0 "/home/giovani/Documentos/Tareas/1S2025/EDD/Proyectos/scrabble/src/estructuras/LinkedListG.cpp"
+# 0 "/home/giovani/Documentos/Tareas/1S2025/EDD/Proyectos/scrabble/src/estructuras/LinkedList.cpp"
 # 1 "/home/giovani/Documentos/Tareas/1S2025/EDD/Proyectos/scrabble/cmake-build-debug//"
 # 0 "<built-in>"
 # 0 "<command-line>"
 # 1 "/usr/include/stdc-predef.h" 1 3 4
 # 0 "<command-line>" 2
-# 1 "/home/giovani/Documentos/Tareas/1S2025/EDD/Proyectos/scrabble/src/estructuras/LinkedListG.cpp"
+# 1 "/home/giovani/Documentos/Tareas/1S2025/EDD/Proyectos/scrabble/src/estructuras/LinkedList.cpp"
 
 
 
-# 1 "/home/giovani/Documentos/Tareas/1S2025/EDD/Proyectos/scrabble/src/estructuras/../../include/estructuras/LinkedListG.h" 1
+# 1 "/home/giovani/Documentos/Tareas/1S2025/EDD/Proyectos/scrabble/src/estructuras/../../include/estructuras/LinkedList.h" 1
 
 
 
@@ -17,21 +17,22 @@
 
 
 template <typename T>
-class LinkedListG
+class LinkedList
 {
 private:
     struct Node
     {
         T value;
         Node* next;
+        explicit Node(T val, Node* nxt = nullptr) : value(val), next(nxt) {}
     } * head;
 
     int _size;
 
 public:
-    LinkedListG();
+    LinkedList();
 
-    ~LinkedListG();
+    ~LinkedList();
 
     void insertAtHead(T data);
 
@@ -43,11 +44,15 @@ public:
 
     T search(int index);
 
+    bool deleteAt(int index);
+
     bool empty() const;
 
     int size() const;
+
+    bool contains(T object);
 };
-# 5 "/home/giovani/Documentos/Tareas/1S2025/EDD/Proyectos/scrabble/src/estructuras/LinkedListG.cpp" 2
+# 5 "/home/giovani/Documentos/Tareas/1S2025/EDD/Proyectos/scrabble/src/estructuras/LinkedList.cpp" 2
 
 # 1 "/usr/include/c++/14/stdexcept" 1 3
 # 36 "/usr/include/c++/14/stdexcept" 3
@@ -32864,15 +32869,15 @@ namespace std __attribute__ ((__visibility__ ("default")))
 
 
 }
-# 7 "/home/giovani/Documentos/Tareas/1S2025/EDD/Proyectos/scrabble/src/estructuras/LinkedListG.cpp" 2
+# 7 "/home/giovani/Documentos/Tareas/1S2025/EDD/Proyectos/scrabble/src/estructuras/LinkedList.cpp" 2
 
 
 
 
 
-# 11 "/home/giovani/Documentos/Tareas/1S2025/EDD/Proyectos/scrabble/src/estructuras/LinkedListG.cpp"
+# 11 "/home/giovani/Documentos/Tareas/1S2025/EDD/Proyectos/scrabble/src/estructuras/LinkedList.cpp"
 template <typename T>
-LinkedListG<T>::LinkedListG()
+LinkedList<T>::LinkedList()
 {
     this->head = nullptr;
     this->_size = 0;
@@ -32883,9 +32888,23 @@ LinkedListG<T>::LinkedListG()
 
 
 template <typename T>
-int LinkedListG<T>::size() const
+int LinkedList<T>::size() const
 {
     return this->_size;
+}
+
+template <typename T>
+bool LinkedList<T>::contains(T object)
+{
+    auto* current = this->head;
+    while (current)
+    {
+        if (current->value == object)
+        {
+            return true;
+        }
+    }
+    return false;
 }
 
 
@@ -32893,12 +32912,12 @@ int LinkedListG<T>::size() const
 
 
 template <typename T>
-void LinkedListG<T>::insertAtEnd(T data)
+void LinkedList<T>::insertAtEnd(T data)
 {
-    auto* temp = new Node;
-    temp->next = nullptr;
-    temp->value = data;
 
+
+
+    auto* temp = new Node(data);
     if (this->head == nullptr)
     {
         this->head = temp;
@@ -32906,7 +32925,10 @@ void LinkedListG<T>::insertAtEnd(T data)
     else
     {
         auto* pointer = this->head;
-        while (pointer->next) { pointer = pointer->next; }
+        while (pointer->next)
+        {
+            pointer = pointer->next;
+        }
         pointer->next = temp;
     }
     ++this->_size;
@@ -32917,12 +32939,13 @@ void LinkedListG<T>::insertAtEnd(T data)
 
 
 template <typename T>
-void LinkedListG<T>::insertAtHead(T data)
+void LinkedList<T>::insertAtHead(T data)
 {
-    auto* temp = new Node;
-    temp->value = data;
-    temp->next = nullptr;
 
+
+
+
+    auto* temp = new Node(data);
     if (this->head == nullptr)
     {
         this->head = temp;
@@ -32940,9 +32963,10 @@ void LinkedListG<T>::insertAtHead(T data)
 
 
 template <typename T>
-void LinkedListG<T>::deleteAtHead()
+void LinkedList<T>::deleteAtHead()
 {
-    if (this->head == nullptr) throw std::runtime_error("Lista vacia");
+    if (this->head == nullptr)
+        throw std::runtime_error("Lista vacia");
 
     auto* temp = this->head;
     this->head = this->head->next;
@@ -32954,9 +32978,10 @@ void LinkedListG<T>::deleteAtHead()
 
 
 template <typename T>
-void LinkedListG<T>::deleteAtEnd()
+void LinkedList<T>::deleteAtEnd()
 {
-    if (this->head == nullptr) throw std::runtime_error("Lista vacia");
+    if (this->head == nullptr)
+        throw std::runtime_error("Lista vacia");
 
     if (this->head->next == nullptr)
     {
@@ -32966,7 +32991,8 @@ void LinkedListG<T>::deleteAtEnd()
     else
     {
         auto* current = this->head;
-        while (current->next->next != nullptr) current = current->next;
+        while (current->next->next != nullptr)
+            current = current->next;
         delete current->next;
         current->next = nullptr;
     }
@@ -32979,9 +33005,10 @@ void LinkedListG<T>::deleteAtEnd()
 
 
 template <typename T>
-T LinkedListG<T>::search(int index)
+T LinkedList<T>::search(int index)
 {
-    if (this->head == nullptr) throw std::runtime_error("Lista vacia");
+    if (this->head == nullptr)
+        throw std::runtime_error("Lista vacia");
 
     auto* current = this->head;
     int count = 0;
@@ -33002,7 +33029,7 @@ T LinkedListG<T>::search(int index)
 
 
 template <typename T>
-bool LinkedListG<T>::empty() const
+bool LinkedList<T>::empty() const
 {
     return this->head == nullptr;
 }
@@ -33011,7 +33038,7 @@ bool LinkedListG<T>::empty() const
 
 
 template <typename T>
-LinkedListG<T>::~LinkedListG()
+LinkedList<T>::~LinkedList()
 {
     while (this->head != nullptr)
     {
@@ -33019,4 +33046,45 @@ LinkedListG<T>::~LinkedListG()
         this->head = this->head->next;
         delete aux;
     }
+}
+
+
+
+
+
+
+
+template <typename T>
+bool LinkedList<T>::deleteAt(int index)
+{
+
+    if (index < 0 || index > _size)
+    {
+        return false;
+    }
+
+    Node* aEliminar = nullptr;
+    if (index == 0)
+    {
+        deleteAtHead();
+    }
+    else if (index == _size - 1)
+    {
+        deleteAtEnd();
+    }
+    else
+    {
+        Node* current = this->head;
+
+        for (int i = 0; i < index - 1; ++i)
+        {
+            current = current->next;
+        }
+        aEliminar = current->next;
+        current->next = aEliminar->next;
+    }
+
+    delete aEliminar;
+    --this->_size;
+    return true;
 }
