@@ -209,3 +209,12 @@ void Game::ver_pista()
             << whitespace;
     }
 }
+
+/*
+ const char* arreglo = cadena.c_str();
+const char* ptr = arreglo;
+while (*ptr != '\0') {
+    std::cout << *ptr;
+    ptr++;
+}
+ */

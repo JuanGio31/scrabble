@@ -59,7 +59,8 @@
 				12,
 				15,
 				17,
-				19
+				19,
+				20
 			]
 		}
 	],
@@ -102,7 +103,8 @@
 				12,
 				15,
 				17,
-				19
+				19,
+				20
 			]
 		},
 		{
@@ -117,7 +119,8 @@
 				13,
 				14,
 				16,
-				18
+				18,
+				21
 			]
 		}
 	],
@@ -233,6 +236,17 @@
 			"compileGroupIndex" : 0,
 			"path" : "src/utilidades/Utilidad.cpp",
 			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "src/estructuras/Stack.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "include/estructuras/Stack.h",
+			"sourceGroupIndex" : 1
 		}
 	],
 	"type" : "EXECUTABLE"
