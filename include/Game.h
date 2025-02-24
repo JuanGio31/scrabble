@@ -5,7 +5,8 @@
 #include "Tablero.h"
 #include "estructuras/Queue.h"
 #include "utilidades/Utilidad.h"
-// #include "../src/estructuras/Queue.cpp"
+#include "../src/estructuras/Queue.cpp"
+#include "../src/Archivo.cpp"
 
 class Game
 {
@@ -18,7 +19,7 @@ private:
     void ingresar_jugadores();
     void asignar_turnos();
     void iniciar_juego();
-    void cambiar_turno(Jugador actual);
+    void cambiar_turno();
     static void ordenamiento_burbuja(LinkedList<std::string> palabras);
     void ver_pista();
 public:

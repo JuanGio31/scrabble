@@ -1,10 +1,8 @@
-CMakeFiles/scrabble.dir/src/ManejadorFichas.cpp.o.ddi: \
- /home/giovani/Documentos/Tareas/1S2025/EDD/Proyectos/scrabble/src/ManejadorFichas.cpp \
+CMakeFiles/scrabble.dir/src/estructuras/Stack.cpp.o.ddi: \
+ /home/giovani/Documentos/Tareas/1S2025/EDD/Proyectos/scrabble/src/estructuras/Stack.cpp \
  /usr/include/stdc-predef.h \
- /home/giovani/Documentos/Tareas/1S2025/EDD/Proyectos/scrabble/src/../include/ManejadorFichas.h \
- /home/giovani/Documentos/Tareas/1S2025/EDD/Proyectos/scrabble/src/../include/Ficha.h \
- /home/giovani/Documentos/Tareas/1S2025/EDD/Proyectos/scrabble/src/../include/Jugador.h \
- /usr/include/c++/14/string /usr/include/c++/14/bits/requires_hosted.h \
+ /home/giovani/Documentos/Tareas/1S2025/EDD/Proyectos/scrabble/src/estructuras/../../include/estructuras/Stack.h \
+ /usr/include/c++/14/stdexcept /usr/include/c++/14/exception \
  /usr/include/x86_64-linux-gnu/c++/14/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/14/bits/os_defines.h \
  /usr/include/features.h /usr/include/features-time64.h \
@@ -16,6 +14,16 @@ CMakeFiles/scrabble.dir/src/ManejadorFichas.cpp.o.ddi: \
  /usr/include/x86_64-linux-gnu/gnu/stubs-64.h \
  /usr/include/x86_64-linux-gnu/c++/14/bits/cpu_defines.h \
  /usr/include/c++/14/pstl/pstl_config.h \
+ /usr/include/c++/14/bits/exception.h /usr/include/c++/14/bits/version.h \
+ /usr/include/c++/14/bits/exception_ptr.h \
+ /usr/include/c++/14/bits/exception_defines.h \
+ /usr/include/c++/14/bits/cxxabi_init_exception.h \
+ /usr/lib/gcc/x86_64-linux-gnu/14/include/stddef.h \
+ /usr/include/c++/14/typeinfo /usr/include/c++/14/bits/hash_bytes.h \
+ /usr/include/c++/14/new /usr/include/c++/14/bits/move.h \
+ /usr/include/c++/14/type_traits \
+ /usr/include/c++/14/bits/nested_exception.h /usr/include/c++/14/string \
+ /usr/include/c++/14/bits/requires_hosted.h \
  /usr/include/c++/14/bits/stringfwd.h \
  /usr/include/c++/14/bits/memoryfwd.h \
  /usr/include/c++/14/bits/char_traits.h \
@@ -24,7 +32,6 @@ CMakeFiles/scrabble.dir/src/ManejadorFichas.cpp.o.ddi: \
  /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
  /usr/include/x86_64-linux-gnu/bits/floatn.h \
  /usr/include/x86_64-linux-gnu/bits/floatn-common.h \
- /usr/lib/gcc/x86_64-linux-gnu/14/include/stddef.h \
  /usr/lib/gcc/x86_64-linux-gnu/14/include/stdarg.h \
  /usr/include/x86_64-linux-gnu/bits/wchar.h \
  /usr/include/x86_64-linux-gnu/bits/types/wint_t.h \
@@ -34,10 +41,8 @@ CMakeFiles/scrabble.dir/src/ManejadorFichas.cpp.o.ddi: \
  /usr/include/x86_64-linux-gnu/bits/types/FILE.h \
  /usr/include/x86_64-linux-gnu/bits/types/locale_t.h \
  /usr/include/x86_64-linux-gnu/bits/types/__locale_t.h \
- /usr/include/c++/14/type_traits /usr/include/c++/14/bits/version.h \
  /usr/include/c++/14/compare /usr/include/c++/14/concepts \
- /usr/include/c++/14/bits/stl_construct.h /usr/include/c++/14/new \
- /usr/include/c++/14/bits/exception.h /usr/include/c++/14/bits/move.h \
+ /usr/include/c++/14/bits/stl_construct.h \
  /usr/include/c++/14/bits/stl_iterator_base_types.h \
  /usr/include/c++/14/bits/iterator_concepts.h \
  /usr/include/c++/14/bits/ptr_traits.h \
@@ -49,7 +54,6 @@ CMakeFiles/scrabble.dir/src/ManejadorFichas.cpp.o.ddi: \
  /usr/include/x86_64-linux-gnu/c++/14/bits/c++allocator.h \
  /usr/include/c++/14/bits/new_allocator.h \
  /usr/include/c++/14/bits/functexcept.h \
- /usr/include/c++/14/bits/exception_defines.h \
  /usr/include/c++/14/bits/cpp_type_traits.h \
  /usr/include/c++/14/bits/localefwd.h \
  /usr/include/x86_64-linux-gnu/c++/14/bits/c++locale.h \
@@ -79,7 +83,6 @@ CMakeFiles/scrabble.dir/src/ManejadorFichas.cpp.o.ddi: \
  /usr/include/c++/14/ext/alloc_traits.h \
  /usr/include/c++/14/bits/alloc_traits.h /usr/include/c++/14/string_view \
  /usr/include/c++/14/bits/functional_hash.h \
- /usr/include/c++/14/bits/hash_bytes.h \
  /usr/include/c++/14/bits/ranges_base.h \
  /usr/include/c++/14/bits/max_size_type.h /usr/include/c++/14/numbers \
  /usr/include/c++/14/bits/string_view.tcc \
@@ -123,83 +126,4 @@ CMakeFiles/scrabble.dir/src/ManejadorFichas.cpp.o.ddi: \
  /usr/include/c++/14/bits/memory_resource.h /usr/include/c++/14/cstddef \
  /usr/include/c++/14/bits/uses_allocator.h \
  /usr/include/c++/14/bits/uses_allocator_args.h /usr/include/c++/14/tuple \
- /usr/include/c++/14/bits/ranges_util.h \
- /home/giovani/Documentos/Tareas/1S2025/EDD/Proyectos/scrabble/src/../include/estructuras/LinkedList.h \
- /home/giovani/Documentos/Tareas/1S2025/EDD/Proyectos/scrabble/src/../include/../src/estructuras/LinkedList.cpp \
- /home/giovani/Documentos/Tareas/1S2025/EDD/Proyectos/scrabble/src/../include/../src/estructuras/../../include/estructuras/LinkedList.h \
- /usr/include/c++/14/stdexcept /usr/include/c++/14/exception \
- /usr/include/c++/14/bits/exception_ptr.h \
- /usr/include/c++/14/bits/cxxabi_init_exception.h \
- /usr/include/c++/14/typeinfo /usr/include/c++/14/bits/nested_exception.h \
- /home/giovani/Documentos/Tareas/1S2025/EDD/Proyectos/scrabble/src/../include/estructuras/Queue.h \
- /usr/include/c++/14/iostream /usr/include/c++/14/ostream \
- /usr/include/c++/14/ios /usr/include/c++/14/bits/ios_base.h \
- /usr/include/c++/14/ext/atomicity.h \
- /usr/include/x86_64-linux-gnu/c++/14/bits/gthr.h \
- /usr/include/x86_64-linux-gnu/c++/14/bits/gthr-default.h \
- /usr/include/pthread.h /usr/include/sched.h \
- /usr/include/x86_64-linux-gnu/bits/sched.h \
- /usr/include/x86_64-linux-gnu/bits/types/struct_sched_param.h \
- /usr/include/x86_64-linux-gnu/bits/cpu-set.h /usr/include/time.h \
- /usr/include/x86_64-linux-gnu/bits/time.h \
- /usr/include/x86_64-linux-gnu/bits/timex.h \
- /usr/include/x86_64-linux-gnu/bits/types/struct_tm.h \
- /usr/include/x86_64-linux-gnu/bits/types/struct_itimerspec.h \
- /usr/include/x86_64-linux-gnu/bits/setjmp.h \
- /usr/include/x86_64-linux-gnu/bits/types/struct___jmp_buf_tag.h \
- /usr/include/x86_64-linux-gnu/bits/pthread_stack_min-dynamic.h \
- /usr/include/x86_64-linux-gnu/c++/14/bits/atomic_word.h \
- /usr/include/x86_64-linux-gnu/sys/single_threaded.h \
- /usr/include/c++/14/bits/locale_classes.h \
- /usr/include/c++/14/bits/locale_classes.tcc \
- /usr/include/c++/14/system_error \
- /usr/include/x86_64-linux-gnu/c++/14/bits/error_constants.h \
- /usr/include/c++/14/streambuf /usr/include/c++/14/bits/streambuf.tcc \
- /usr/include/c++/14/bits/basic_ios.h \
- /usr/include/c++/14/bits/locale_facets.h /usr/include/c++/14/cwctype \
- /usr/include/wctype.h /usr/include/x86_64-linux-gnu/bits/wctype-wchar.h \
- /usr/include/x86_64-linux-gnu/c++/14/bits/ctype_base.h \
- /usr/include/c++/14/bits/streambuf_iterator.h \
- /usr/include/x86_64-linux-gnu/c++/14/bits/ctype_inline.h \
- /usr/include/c++/14/bits/locale_facets.tcc \
- /usr/include/c++/14/bits/basic_ios.tcc \
- /usr/include/c++/14/bits/ostream.tcc /usr/include/c++/14/istream \
- /usr/include/c++/14/bits/istream.tcc \
- /home/giovani/Documentos/Tareas/1S2025/EDD/Proyectos/scrabble/src/../include/utilidades/Utilidad.h \
- /usr/include/c++/14/random /usr/include/c++/14/cmath /usr/include/math.h \
- /usr/include/x86_64-linux-gnu/bits/math-vector.h \
- /usr/include/x86_64-linux-gnu/bits/libm-simd-decl-stubs.h \
- /usr/include/x86_64-linux-gnu/bits/flt-eval-method.h \
- /usr/include/x86_64-linux-gnu/bits/fp-logb.h \
- /usr/include/x86_64-linux-gnu/bits/fp-fast.h \
- /usr/include/x86_64-linux-gnu/bits/mathcalls-helper-functions.h \
- /usr/include/x86_64-linux-gnu/bits/mathcalls.h \
- /usr/include/x86_64-linux-gnu/bits/mathcalls-narrow.h \
- /usr/include/x86_64-linux-gnu/bits/iscanonical.h \
- /usr/include/c++/14/bits/specfun.h /usr/include/c++/14/limits \
- /usr/include/c++/14/tr1/gamma.tcc \
- /usr/include/c++/14/tr1/special_function_util.h \
- /usr/include/c++/14/tr1/bessel_function.tcc \
- /usr/include/c++/14/tr1/beta_function.tcc \
- /usr/include/c++/14/tr1/ell_integral.tcc \
- /usr/include/c++/14/tr1/exp_integral.tcc \
- /usr/include/c++/14/tr1/hypergeometric.tcc \
- /usr/include/c++/14/tr1/legendre_function.tcc \
- /usr/include/c++/14/tr1/modified_bessel_func.tcc \
- /usr/include/c++/14/tr1/poly_hermite.tcc \
- /usr/include/c++/14/tr1/poly_laguerre.tcc \
- /usr/include/c++/14/tr1/riemann_zeta.tcc /usr/include/c++/14/cstdint \
- /usr/lib/gcc/x86_64-linux-gnu/14/include/stdint.h /usr/include/stdint.h \
- /usr/include/x86_64-linux-gnu/bits/stdint-uintn.h \
- /usr/include/x86_64-linux-gnu/bits/stdint-least.h \
- /usr/include/c++/14/bits/random.h /usr/include/c++/14/vector \
- /usr/include/c++/14/bits/stl_uninitialized.h \
- /usr/include/c++/14/bits/stl_vector.h \
- /usr/include/c++/14/bits/stl_bvector.h \
- /usr/include/c++/14/bits/vector.tcc \
- /usr/include/c++/14/bits/uniform_int_dist.h \
- /usr/include/x86_64-linux-gnu/c++/14/bits/opt_random.h \
- /usr/include/c++/14/bits/random.tcc /usr/include/c++/14/numeric \
- /usr/include/c++/14/bits/stl_numeric.h \
- /usr/include/c++/14/pstl/glue_numeric_defs.h \
- /usr/include/c++/14/pstl/execution_defs.h
+ /usr/include/c++/14/bits/ranges_util.h

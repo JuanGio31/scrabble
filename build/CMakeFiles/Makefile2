@@ -85,12 +85,12 @@ clean: CMakeFiles/scrabble.dir/clean
 CMakeFiles/scrabble.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/scrabble.dir/build.make CMakeFiles/scrabble.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/scrabble.dir/build.make CMakeFiles/scrabble.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/giovani/Documentos/Tareas/1S2025/EDD/Proyectos/scrabble/build/CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9,10,11 "Built target scrabble"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/giovani/Documentos/Tareas/1S2025/EDD/Proyectos/scrabble/build/CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9,10,11,12,13 "Built target scrabble"
 .PHONY : CMakeFiles/scrabble.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/scrabble.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/giovani/Documentos/Tareas/1S2025/EDD/Proyectos/scrabble/build/CMakeFiles 11
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/giovani/Documentos/Tareas/1S2025/EDD/Proyectos/scrabble/build/CMakeFiles 13
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/scrabble.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/giovani/Documentos/Tareas/1S2025/EDD/Proyectos/scrabble/build/CMakeFiles 0
 .PHONY : CMakeFiles/scrabble.dir/rule
@@ -102,7 +102,7 @@ scrabble: CMakeFiles/scrabble.dir/rule
 # codegen rule for target.
 CMakeFiles/scrabble.dir/codegen:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/scrabble.dir/build.make CMakeFiles/scrabble.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/giovani/Documentos/Tareas/1S2025/EDD/Proyectos/scrabble/build/CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9,10,11 "Finished codegen for target scrabble"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/giovani/Documentos/Tareas/1S2025/EDD/Proyectos/scrabble/build/CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9,10,11,12,13 "Finished codegen for target scrabble"
 .PHONY : CMakeFiles/scrabble.dir/codegen
 
 # clean rule for target.

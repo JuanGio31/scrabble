@@ -1,19 +1,24 @@
 #ifndef MANEJADORFICHAS_H
 #define MANEJADORFICHAS_H
+
 #include "Ficha.h"
 #include "Jugador.h"
 #include "estructuras/LinkedList.h"
+#include "estructuras/Queue.h"
+//#include "../src/estructuras/Queue.cpp"
 
 class ManejadorFichas
 {
 private:
-    LinkedList<Ficha> lista_fichas;
-    bool existe(int index);
+    LinkedList<Ficha>* lista_fichas;
 
 public:
-    explicit ManejadorFichas(const LinkedList<Ficha>& _lista);
-    Ficha obtener_ficha(int index);
-    void mostrar_fichas_disponibles();
-    void eliminar(int index);
+    ManejadorFichas();
+
+    ~ManejadorFichas();
+
+    void generarListaFichas(LinkedList<std::string> lista) const;
+
+    void repartirFichas(Queue<Jugador>& jugadores) const;
 };
 #endif //MANEJADORFICHAS_H

@@ -369,6 +369,54 @@ src/estructuras/Queue.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/scrabble.dir/build.make CMakeFiles/scrabble.dir/src/estructuras/Queue.cpp.s
 .PHONY : src/estructuras/Queue.cpp.s
 
+src/estructuras/Stack.o: src/estructuras/Stack.cpp.o
+.PHONY : src/estructuras/Stack.o
+
+# target to build an object file
+src/estructuras/Stack.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/scrabble.dir/build.make CMakeFiles/scrabble.dir/src/estructuras/Stack.cpp.o
+.PHONY : src/estructuras/Stack.cpp.o
+
+src/estructuras/Stack.i: src/estructuras/Stack.cpp.i
+.PHONY : src/estructuras/Stack.i
+
+# target to preprocess a source file
+src/estructuras/Stack.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/scrabble.dir/build.make CMakeFiles/scrabble.dir/src/estructuras/Stack.cpp.i
+.PHONY : src/estructuras/Stack.cpp.i
+
+src/estructuras/Stack.s: src/estructuras/Stack.cpp.s
+.PHONY : src/estructuras/Stack.s
+
+# target to generate assembly for a file
+src/estructuras/Stack.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/scrabble.dir/build.make CMakeFiles/scrabble.dir/src/estructuras/Stack.cpp.s
+.PHONY : src/estructuras/Stack.cpp.s
+
+src/utilidades/Utilidad.o: src/utilidades/Utilidad.cpp.o
+.PHONY : src/utilidades/Utilidad.o
+
+# target to build an object file
+src/utilidades/Utilidad.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/scrabble.dir/build.make CMakeFiles/scrabble.dir/src/utilidades/Utilidad.cpp.o
+.PHONY : src/utilidades/Utilidad.cpp.o
+
+src/utilidades/Utilidad.i: src/utilidades/Utilidad.cpp.i
+.PHONY : src/utilidades/Utilidad.i
+
+# target to preprocess a source file
+src/utilidades/Utilidad.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/scrabble.dir/build.make CMakeFiles/scrabble.dir/src/utilidades/Utilidad.cpp.i
+.PHONY : src/utilidades/Utilidad.cpp.i
+
+src/utilidades/Utilidad.s: src/utilidades/Utilidad.cpp.s
+.PHONY : src/utilidades/Utilidad.s
+
+# target to generate assembly for a file
+src/utilidades/Utilidad.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/scrabble.dir/build.make CMakeFiles/scrabble.dir/src/utilidades/Utilidad.cpp.s
+.PHONY : src/utilidades/Utilidad.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -408,6 +456,12 @@ help:
 	@echo "... src/estructuras/Queue.o"
 	@echo "... src/estructuras/Queue.i"
 	@echo "... src/estructuras/Queue.s"
+	@echo "... src/estructuras/Stack.o"
+	@echo "... src/estructuras/Stack.i"
+	@echo "... src/estructuras/Stack.s"
+	@echo "... src/utilidades/Utilidad.o"
+	@echo "... src/utilidades/Utilidad.i"
+	@echo "... src/utilidades/Utilidad.s"
 .PHONY : help
 
 

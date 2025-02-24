@@ -1,35 +1,35 @@
 #include <iostream>
 #include <fstream>
 #include <sstream>
-#include <utility>
+#include <string>
 #include "../include/estructuras/LinkedList.h"
-#include "../include/utilidades/Utilidad.h"
 
 class Archivo
 {
 private:
-    size_t total_letras;
     std::string path;
+    LinkedList<std::string>* palabras;
 
 public:
     explicit Archivo(std::string _path)
     {
         this->path = std::move(_path);
-        this->total_letras = 0;
+        this->palabras = nullptr;
     }
 
     /**
      * Funcion que devuelve lee el archivo para despues almacenar las palabras en una lista
      * @return lista de palabras
      */
-    [[nodiscard]] LinkedList<std::string> leer_archivo()
+    //[[nodiscard]] LinkedList<std::string>
+    void leer_archivo(LinkedList<std::string>* listado)
     {
-        LinkedList<std::string> palabras;
+        //  LinkedList<std::string> palabras;
         std::ifstream archivo(this->path);
         if (!archivo.is_open())
         {
             std::cerr << "Error al abrir el archivo: " << path << std::endl;
-            return palabras;
+            //return palabras;
         }
 
         std::string linea;
@@ -43,18 +43,11 @@ public:
             {
                 // Divide la línea por comas
                 //std::cout << cadena << " ";
-                palabras.insertAtEnd(cadena);
-
-                //sumar el total de letras
-                total_letras = total_letras + cadena.length();
+                //palabras.insertAtEnd(cadena);
+                listado->insertAtEnd(cadena);
             }
         }
         archivo.close(); // Cierra el archivo
-        return palabras;
-    }
-
-    [[nodiscard]] size_t obtener_total_letras() const
-    {
-        return total_letras;
+        //return palabras;
     }
 };

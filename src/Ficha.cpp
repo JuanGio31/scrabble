@@ -12,12 +12,18 @@ Ficha::Ficha(char _letra, int _puntos)
     this->puntos = _puntos;
 }
 
-char Ficha::obtenerLetra()
+Ficha::Ficha(char _letra)
+{
+    this->letra = _letra;
+    this->puntos = 0;
+}
+
+char Ficha::obtenerLetra() const
 {
     return this->letra;
 }
 
-int Ficha::obtenerPuntos()
+int Ficha::obtenerPuntos() const
 {
     return this->puntos;
 }

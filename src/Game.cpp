@@ -1,9 +1,11 @@
 #include <iostream>
 #include <limits>
 #include "../include/Game.h"
+
+#include "../include/ManejadorFichas.h"
 #include "../include/Tablero.h"
-#include "estructuras/Queue.cpp"
-#include "estructuras/LinkedList.cpp"
+//#include "estructuras/Queue.cpp"
+//#include "estructuras/LinkedList.cpp"
 
 #ifdef _WIN32
 #include <windows.h>
@@ -24,6 +26,7 @@ Game::Game()
     mostrar_menu();
 }
 
+//funciona
 void Game::mostrar_menu()
 {
     std::cout << R"(
@@ -62,11 +65,13 @@ void Game::mostrar_menu()
             std::cout << "Saliendo...\n" << std::endl;
             break;
         case 1:
-            iniciar_juego();
+            //            iniciar_juego();
             tablero.pintar_tablero();
             break;
         case 2:
-            std::cout << "Reportes." << std::endl;
+            //std::cout << "Reportes." << std::endl;
+            std::cout << "Prueba cambio de jugadores\n\n";
+            iniciar_juego();
             break;
         default:
             std::cout << "Opcion incorrecta! " << std::endl;
@@ -83,6 +88,7 @@ void Game::mostrar_menu()
     }
 }
 
+//funciona
 void Game::ingresar_jugadores()
 {
     int numeroJugadores = -1;
@@ -120,6 +126,7 @@ void Game::ingresar_jugadores()
     asignar_turnos();
 }
 
+//funciona
 void Game::asignar_turnos()
 {
     const int n = jugadores_en_juego_queue.size();
@@ -152,18 +159,33 @@ void Game::asignar_turnos()
 void Game::iniciar_juego()
 {
     ingresar_jugadores();
-    std::cout << "letra   puntos";
-    std::cout << "  ↓       ↓";
-    std::cout << "  A     [10].";
-    //Jugador jugador_actual;
+    Archivo arc("/home/giovani/Documentos/Tareas/1S2025/EDD/Proyectos/scrabble/prueba.csv");
+    //lista_palabras = arc.leer_archivo();
+    arc.leer_archivo(&lista_palabras);
+    ManejadorFichas manejador_fichas;
+    manejador_fichas.generarListaFichas(lista_palabras);
+    manejador_fichas.repartirFichas(jugadores_en_juego_queue);
+
+
+    int numero = 0;
+    while (numero != -1)
+    {
+        std::cout << "Ingresa un numero >>> ";
+        std::cin >> numero;
+        cambiar_turno();
+    }
 }
 
-void Game::cambiar_turno(Jugador actual)
+//funciona?
+void Game::cambiar_turno()
 {
-    actual = jugadores_en_juego_queue.dequeue();
+    Jugador actual = jugadores_en_juego_queue.dequeue();
+    std::cout << "Jugador actual >>> " << actual.obtener_nombre() << std::endl;
+    actual.mostrar_fichas_disponibles();
     jugadores_en_juego_queue.enqueue(actual);
 }
 
+//sin probar
 void Game::ordenamiento_burbuja(LinkedList<std::string> palabras)
 {
     const int n = palabras.size();
@@ -210,11 +232,6 @@ void Game::ver_pista()
     }
 }
 
-/*
- const char* arreglo = cadena.c_str();
-const char* ptr = arreglo;
-while (*ptr != '\0') {
-    std::cout << *ptr;
-    ptr++;
-}
- */
+// std::cout << "letra   puntos";
+// std::cout << "  ↓       ↓";
+// std::cout << "  A     [10].";

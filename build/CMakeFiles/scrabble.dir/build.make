@@ -212,6 +212,34 @@ CMakeFiles/scrabble.dir/src/estructuras/LinkedList.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/scrabble.dir/src/estructuras/LinkedList.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/giovani/Documentos/Tareas/1S2025/EDD/Proyectos/scrabble/src/estructuras/LinkedList.cpp -o CMakeFiles/scrabble.dir/src/estructuras/LinkedList.cpp.s
 
+CMakeFiles/scrabble.dir/src/utilidades/Utilidad.cpp.o: CMakeFiles/scrabble.dir/flags.make
+CMakeFiles/scrabble.dir/src/utilidades/Utilidad.cpp.o: /home/giovani/Documentos/Tareas/1S2025/EDD/Proyectos/scrabble/src/utilidades/Utilidad.cpp
+CMakeFiles/scrabble.dir/src/utilidades/Utilidad.cpp.o: CMakeFiles/scrabble.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/giovani/Documentos/Tareas/1S2025/EDD/Proyectos/scrabble/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/scrabble.dir/src/utilidades/Utilidad.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/scrabble.dir/src/utilidades/Utilidad.cpp.o -MF CMakeFiles/scrabble.dir/src/utilidades/Utilidad.cpp.o.d -o CMakeFiles/scrabble.dir/src/utilidades/Utilidad.cpp.o -c /home/giovani/Documentos/Tareas/1S2025/EDD/Proyectos/scrabble/src/utilidades/Utilidad.cpp
+
+CMakeFiles/scrabble.dir/src/utilidades/Utilidad.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/scrabble.dir/src/utilidades/Utilidad.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/giovani/Documentos/Tareas/1S2025/EDD/Proyectos/scrabble/src/utilidades/Utilidad.cpp > CMakeFiles/scrabble.dir/src/utilidades/Utilidad.cpp.i
+
+CMakeFiles/scrabble.dir/src/utilidades/Utilidad.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/scrabble.dir/src/utilidades/Utilidad.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/giovani/Documentos/Tareas/1S2025/EDD/Proyectos/scrabble/src/utilidades/Utilidad.cpp -o CMakeFiles/scrabble.dir/src/utilidades/Utilidad.cpp.s
+
+CMakeFiles/scrabble.dir/src/estructuras/Stack.cpp.o: CMakeFiles/scrabble.dir/flags.make
+CMakeFiles/scrabble.dir/src/estructuras/Stack.cpp.o: /home/giovani/Documentos/Tareas/1S2025/EDD/Proyectos/scrabble/src/estructuras/Stack.cpp
+CMakeFiles/scrabble.dir/src/estructuras/Stack.cpp.o: CMakeFiles/scrabble.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/giovani/Documentos/Tareas/1S2025/EDD/Proyectos/scrabble/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/scrabble.dir/src/estructuras/Stack.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/scrabble.dir/src/estructuras/Stack.cpp.o -MF CMakeFiles/scrabble.dir/src/estructuras/Stack.cpp.o.d -o CMakeFiles/scrabble.dir/src/estructuras/Stack.cpp.o -c /home/giovani/Documentos/Tareas/1S2025/EDD/Proyectos/scrabble/src/estructuras/Stack.cpp
+
+CMakeFiles/scrabble.dir/src/estructuras/Stack.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/scrabble.dir/src/estructuras/Stack.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/giovani/Documentos/Tareas/1S2025/EDD/Proyectos/scrabble/src/estructuras/Stack.cpp > CMakeFiles/scrabble.dir/src/estructuras/Stack.cpp.i
+
+CMakeFiles/scrabble.dir/src/estructuras/Stack.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/scrabble.dir/src/estructuras/Stack.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/giovani/Documentos/Tareas/1S2025/EDD/Proyectos/scrabble/src/estructuras/Stack.cpp -o CMakeFiles/scrabble.dir/src/estructuras/Stack.cpp.s
+
 # Object files for target scrabble
 scrabble_OBJECTS = \
 "CMakeFiles/scrabble.dir/main.cpp.o" \
@@ -223,7 +251,9 @@ scrabble_OBJECTS = \
 "CMakeFiles/scrabble.dir/src/Archivo.cpp.o" \
 "CMakeFiles/scrabble.dir/src/Game.cpp.o" \
 "CMakeFiles/scrabble.dir/src/estructuras/Queue.cpp.o" \
-"CMakeFiles/scrabble.dir/src/estructuras/LinkedList.cpp.o"
+"CMakeFiles/scrabble.dir/src/estructuras/LinkedList.cpp.o" \
+"CMakeFiles/scrabble.dir/src/utilidades/Utilidad.cpp.o" \
+"CMakeFiles/scrabble.dir/src/estructuras/Stack.cpp.o"
 
 # External object files for target scrabble
 scrabble_EXTERNAL_OBJECTS =
@@ -238,10 +268,12 @@ scrabble: CMakeFiles/scrabble.dir/src/Archivo.cpp.o
 scrabble: CMakeFiles/scrabble.dir/src/Game.cpp.o
 scrabble: CMakeFiles/scrabble.dir/src/estructuras/Queue.cpp.o
 scrabble: CMakeFiles/scrabble.dir/src/estructuras/LinkedList.cpp.o
+scrabble: CMakeFiles/scrabble.dir/src/utilidades/Utilidad.cpp.o
+scrabble: CMakeFiles/scrabble.dir/src/estructuras/Stack.cpp.o
 scrabble: CMakeFiles/scrabble.dir/build.make
 scrabble: CMakeFiles/scrabble.dir/compiler_depend.ts
 scrabble: CMakeFiles/scrabble.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/giovani/Documentos/Tareas/1S2025/EDD/Proyectos/scrabble/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Linking CXX executable scrabble"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/giovani/Documentos/Tareas/1S2025/EDD/Proyectos/scrabble/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Linking CXX executable scrabble"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/scrabble.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

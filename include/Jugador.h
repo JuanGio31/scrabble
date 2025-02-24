@@ -3,15 +3,18 @@
 
 #include <string>
 
-#include "ManejadorFichas.h"
+#include "Ficha.h"
+#include "estructuras/LinkedList.h"
+#include "../src/estructuras/LinkedList.cpp"
 
 class Jugador
 {
 private:
     std::string nombre;
     // ManejadorFichas fichas;
-
+    LinkedList<Ficha> lista_fichas;
     int movimientos;
+    bool existe(int index);
 
 public:
     explicit Jugador();
@@ -20,5 +23,10 @@ public:
     [[nodiscard]] int obtener_movimientos() const;
     void aumentar_movimiento();
     void set_nombre(std::string _nombre);
+    Ficha obtener_ficha(int index);
+    void mostrar_fichas_disponibles();
+    void eliminar(int index);
+    LinkedList<Ficha> obetener_fichas_list();
+    void insertar(Ficha ficha);
 };
 #endif // JUGADOR_H

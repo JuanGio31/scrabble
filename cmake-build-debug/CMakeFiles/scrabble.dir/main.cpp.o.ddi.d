@@ -158,9 +158,10 @@ CMakeFiles/scrabble.dir/main.cpp.o.ddi: \
  /usr/include/c++/14/bits/istream.tcc \
  /home/giovani/Documentos/Tareas/1S2025/EDD/Proyectos/scrabble/include/Game.h \
  /home/giovani/Documentos/Tareas/1S2025/EDD/Proyectos/scrabble/include/Jugador.h \
- /home/giovani/Documentos/Tareas/1S2025/EDD/Proyectos/scrabble/include/ManejadorFichas.h \
  /home/giovani/Documentos/Tareas/1S2025/EDD/Proyectos/scrabble/include/Ficha.h \
  /home/giovani/Documentos/Tareas/1S2025/EDD/Proyectos/scrabble/include/estructuras/LinkedList.h \
+ /home/giovani/Documentos/Tareas/1S2025/EDD/Proyectos/scrabble/include/../src/estructuras/LinkedList.cpp \
+ /home/giovani/Documentos/Tareas/1S2025/EDD/Proyectos/scrabble/include/../src/estructuras/../../include/estructuras/LinkedList.h \
  /home/giovani/Documentos/Tareas/1S2025/EDD/Proyectos/scrabble/include/Tablero.h \
  /home/giovani/Documentos/Tareas/1S2025/EDD/Proyectos/scrabble/include/Casilla.h \
  /home/giovani/Documentos/Tareas/1S2025/EDD/Proyectos/scrabble/include/utilidades/Utilidad.h \
@@ -201,4 +202,13 @@ CMakeFiles/scrabble.dir/main.cpp.o.ddi: \
  /usr/include/c++/14/bits/stl_numeric.h \
  /usr/include/c++/14/pstl/glue_numeric_defs.h \
  /usr/include/c++/14/pstl/execution_defs.h \
- /home/giovani/Documentos/Tareas/1S2025/EDD/Proyectos/scrabble/include/estructuras/Queue.h
+ /home/giovani/Documentos/Tareas/1S2025/EDD/Proyectos/scrabble/include/estructuras/Queue.h \
+ /home/giovani/Documentos/Tareas/1S2025/EDD/Proyectos/scrabble/include/../src/estructuras/Queue.cpp \
+ /home/giovani/Documentos/Tareas/1S2025/EDD/Proyectos/scrabble/include/../src/estructuras/../../include/estructuras/Queue.h \
+ /home/giovani/Documentos/Tareas/1S2025/EDD/Proyectos/scrabble/include/../src/Archivo.cpp \
+ /usr/include/c++/14/fstream /usr/include/c++/14/bits/codecvt.h \
+ /usr/include/x86_64-linux-gnu/c++/14/bits/basic_file.h \
+ /usr/include/x86_64-linux-gnu/c++/14/bits/c++io.h \
+ /usr/include/c++/14/bits/fstream.tcc /usr/include/c++/14/sstream \
+ /usr/include/c++/14/bits/sstream.tcc \
+ /home/giovani/Documentos/Tareas/1S2025/EDD/Proyectos/scrabble/include/../src/../include/estructuras/LinkedList.h

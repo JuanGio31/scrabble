@@ -19,9 +19,10 @@ public:
     Ficha();
 
     Ficha(char _letra, int _puntos);
+    explicit Ficha(char _letra);
 
-    int obtenerPuntos();
-    char obtenerLetra();
+    [[nodiscard]] int obtenerPuntos() const;
+    [[nodiscard]] char obtenerLetra() const;
 };
 # 2 "/home/giovani/Documentos/Tareas/1S2025/EDD/Proyectos/scrabble/src/Ficha.cpp" 2
 
@@ -37,12 +38,18 @@ Ficha::Ficha(char _letra, int _puntos)
     this->puntos = _puntos;
 }
 
-char Ficha::obtenerLetra()
+Ficha::Ficha(char _letra)
+{
+    this->letra = _letra;
+    this->puntos = 0;
+}
+
+char Ficha::obtenerLetra() const
 {
     return this->letra;
 }
 
-int Ficha::obtenerPuntos()
+int Ficha::obtenerPuntos() const
 {
     return this->puntos;
 }

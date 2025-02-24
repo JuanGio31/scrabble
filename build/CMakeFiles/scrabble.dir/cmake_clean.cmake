@@ -20,6 +20,10 @@ file(REMOVE_RECURSE
   "CMakeFiles/scrabble.dir/src/estructuras/LinkedList.cpp.o.d"
   "CMakeFiles/scrabble.dir/src/estructuras/Queue.cpp.o"
   "CMakeFiles/scrabble.dir/src/estructuras/Queue.cpp.o.d"
+  "CMakeFiles/scrabble.dir/src/estructuras/Stack.cpp.o"
+  "CMakeFiles/scrabble.dir/src/estructuras/Stack.cpp.o.d"
+  "CMakeFiles/scrabble.dir/src/utilidades/Utilidad.cpp.o"
+  "CMakeFiles/scrabble.dir/src/utilidades/Utilidad.cpp.o.d"
   "scrabble"
   "scrabble.pdb"
 )

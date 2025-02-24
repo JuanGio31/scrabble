@@ -58,5 +58,17 @@
   "command": "/usr/bin/c++   -g -std=gnu++20 -o CMakeFiles/scrabble.dir/src/estructuras/LinkedList.cpp.o -c /home/giovani/Documentos/Tareas/1S2025/EDD/Proyectos/scrabble/src/estructuras/LinkedList.cpp",
   "file": "/home/giovani/Documentos/Tareas/1S2025/EDD/Proyectos/scrabble/src/estructuras/LinkedList.cpp",
   "output": "CMakeFiles/scrabble.dir/src/estructuras/LinkedList.cpp.o"
+},
+{
+  "directory": "/home/giovani/Documentos/Tareas/1S2025/EDD/Proyectos/scrabble/build",
+  "command": "/usr/bin/c++   -g -std=gnu++20 -o CMakeFiles/scrabble.dir/src/utilidades/Utilidad.cpp.o -c /home/giovani/Documentos/Tareas/1S2025/EDD/Proyectos/scrabble/src/utilidades/Utilidad.cpp",
+  "file": "/home/giovani/Documentos/Tareas/1S2025/EDD/Proyectos/scrabble/src/utilidades/Utilidad.cpp",
+  "output": "CMakeFiles/scrabble.dir/src/utilidades/Utilidad.cpp.o"
+},
+{
+  "directory": "/home/giovani/Documentos/Tareas/1S2025/EDD/Proyectos/scrabble/build",
+  "command": "/usr/bin/c++   -g -std=gnu++20 -o CMakeFiles/scrabble.dir/src/estructuras/Stack.cpp.o -c /home/giovani/Documentos/Tareas/1S2025/EDD/Proyectos/scrabble/src/estructuras/Stack.cpp",
+  "file": "/home/giovani/Documentos/Tareas/1S2025/EDD/Proyectos/scrabble/src/estructuras/Stack.cpp",
+  "output": "CMakeFiles/scrabble.dir/src/estructuras/Stack.cpp.o"
 }
 ]

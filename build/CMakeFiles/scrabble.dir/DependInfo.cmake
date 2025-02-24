@@ -18,6 +18,8 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/home/giovani/Documentos/Tareas/1S2025/EDD/Proyectos/scrabble/src/Tablero.cpp" "CMakeFiles/scrabble.dir/src/Tablero.cpp.o" "gcc" "CMakeFiles/scrabble.dir/src/Tablero.cpp.o.d"
   "/home/giovani/Documentos/Tareas/1S2025/EDD/Proyectos/scrabble/src/estructuras/LinkedList.cpp" "CMakeFiles/scrabble.dir/src/estructuras/LinkedList.cpp.o" "gcc" "CMakeFiles/scrabble.dir/src/estructuras/LinkedList.cpp.o.d"
   "/home/giovani/Documentos/Tareas/1S2025/EDD/Proyectos/scrabble/src/estructuras/Queue.cpp" "CMakeFiles/scrabble.dir/src/estructuras/Queue.cpp.o" "gcc" "CMakeFiles/scrabble.dir/src/estructuras/Queue.cpp.o.d"
+  "/home/giovani/Documentos/Tareas/1S2025/EDD/Proyectos/scrabble/src/estructuras/Stack.cpp" "CMakeFiles/scrabble.dir/src/estructuras/Stack.cpp.o" "gcc" "CMakeFiles/scrabble.dir/src/estructuras/Stack.cpp.o.d"
+  "/home/giovani/Documentos/Tareas/1S2025/EDD/Proyectos/scrabble/src/utilidades/Utilidad.cpp" "CMakeFiles/scrabble.dir/src/utilidades/Utilidad.cpp.o" "gcc" "CMakeFiles/scrabble.dir/src/utilidades/Utilidad.cpp.o.d"
   "" "scrabble" "gcc" "CMakeFiles/scrabble.dir/link.d"
   )
 

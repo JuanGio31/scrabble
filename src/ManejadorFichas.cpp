@@ -1,60 +1,92 @@
 #include "../include/ManejadorFichas.h"
-#include "estructuras/LinkedList.cpp"
+//#include "estructuras/LinkedList.cpp"
 #include <iostream>
 
-ManejadorFichas::ManejadorFichas(const LinkedList<Ficha>& _lista)
+#include "../include/utilidades/Utilidad.h"
+
+ManejadorFichas::ManejadorFichas()
 {
-    this->lista_fichas = _lista;
+    this->lista_fichas = new LinkedList<Ficha>;
 }
 
-bool ManejadorFichas::existe(int index)
+
+void ManejadorFichas::generarListaFichas(LinkedList<std::string> lista) const
 {
-    try
+    const int n = lista.size(); //obtener el tamanio de la lista
+    auto* arr = new std::string[n];
+
+    //pasar los elementos de la lista a aun array
+    for (int i = 0; i < n; ++i)
     {
-        lista_fichas.search(index);
-        return true;
+        arr[i] = lista.search(i);
+        //lista.deleteAtHead();
     }
-    catch (std::exception& e)
+
+    //insertar las fichas en la lista de fichas
+    for (int i = 0; i < n; ++i)
     {
-        return false;
-    }
-}
-
-void ManejadorFichas::eliminar(int index)
-{
-    lista_fichas.deleteAt(index);
-}
-
-
-Ficha ManejadorFichas::obtener_ficha(int index)
-{
-    if (existe(index))
-    {
-        return lista_fichas.search(index);
-    }
-    //Manejar exception
-    throw std::out_of_range("Indice fuera de rango");
-}
-
-void ManejadorFichas::mostrar_fichas_disponibles()
-{
-    if (!lista_fichas.empty())
-    {
-        std::cout << "\nletra   puntos" << std::endl;
-        std::cout << "  ↓       ↓" << std::endl;
-        std::cout << "  A     [10]." << std::endl << std::endl;
-
-        const int size = this->lista_fichas.size(); //obtener tamanio de la lista
-
-        for (int i = 0; i < size; ++i)
+        const char* arreglo = arr[i].c_str();
+        const char* ptr = arreglo;
+        while (*ptr != '\0')
         {
-            std::string whitespace = (i % 3 == 0) ? "\n" : " "; //operador ternario
-            std::cout << std::endl << lista_fichas.search(i).obtenerLetra() << "  [" << lista_fichas.search(i).
-                obtenerPuntos() << "]." << whitespace;
+            this->lista_fichas->insertAtEnd({*ptr, Utilidad::getRandomInt(1, 5)});
+            ptr++;
         }
     }
-    else
+}
+
+// error -> verificar referencia.
+void ManejadorFichas::repartirFichas(Queue<Jugador>& jugadores) const
+{
+    // for (int i = 0; i < lista_fichas->size(); ++i)
+    // {
+    //     std::cout << (i + 1) << ".- " << lista_fichas->search(i).obtenerLetra() << " <" << lista_fichas->search(i).
+    //         obtenerPuntos() << ">" << std::endl;
+    // }
+
+
+    const int n = this->lista_fichas->size();
+    const int div = n / jugadores.size();
+    std::cout << "lim-> " << div << std::endl;
+
+    const int size_jugadores = jugadores.size();
+    auto* arr = new Jugador[size_jugadores];
+    for (int i = 0; i < size_jugadores; ++i)
     {
-        std::cout << "No hay fichas disponibles" << std::endl;
+        //        arr[i] = jugadores->dequeue();
+        arr[i] = jugadores.dequeue();
     }
+
+    int index = -1;
+    for (int i = 0; i < size_jugadores - 1; ++i)
+    {
+        int k = 0;
+        while (k < div + 1)
+        {
+            ++index;
+            //arr[i].obetener_fichas_list().insertAtEnd(this->lista_fichas->search(index));
+            arr[i].insertar(this->lista_fichas->search(index));
+            ++k;
+        }
+    }
+
+    for (int i = index; i < n; ++i)
+    {
+        //arr[size_jugadores - 1].obetener_fichas_list().insertAtEnd(this->lista_fichas->search(index));
+        arr[size_jugadores - 1].insertar(this->lista_fichas->search(i));
+        index++;
+    }
+
+    for (int i = 0; i < size_jugadores; ++i)
+    {
+        //jugadores->enqueue(arr[i]);
+        jugadores.enqueue(arr[i]);
+    }
+
+    delete [] arr;
+}
+
+ManejadorFichas::~ManejadorFichas()
+{
+    //delete lista_fichas;
 }

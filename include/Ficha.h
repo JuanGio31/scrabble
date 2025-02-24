@@ -11,8 +11,9 @@ public:
     Ficha();
 
     Ficha(char _letra, int _puntos);
+    explicit Ficha(char _letra);
 
-    int obtenerPuntos();
-    char obtenerLetra();
+    [[nodiscard]] int obtenerPuntos() const;
+    [[nodiscard]] char obtenerLetra() const;
 };
 #endif //FICHA_H
