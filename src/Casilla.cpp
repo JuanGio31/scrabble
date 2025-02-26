@@ -1,47 +1,10 @@
 #include "../include/Casilla.h"
 
-// Casilla::Casilla(char _simbolo, int pos_x, int pos_y)
-// {
-//     this->simbolo = _simbolo;
-//     this->posX = pos_x;
-//     this->posY = pos_y;
-//     this->esEditable = true;
-// }
-
-// Casilla::Casilla(int pos_x, int pos_y)
-// {
-//     this->simbolo = '#';
-//     this->posX = pos_x;
-//     this->posY = pos_y;
-//     this->esEditable = false;
-// }
-
-// int Casilla::obtenerPosX() const
-// {
-//     return this->posX;
-// }
-//
-// int Casilla::obtenerPosY() const
-// {
-//     return this->posY;
-// }
-
-Casilla::Casilla()
+Casilla::Casilla(char _simbolo, int puntos)
 {
-    this->simbolo = '#';
-    this->esEditable = false;
-}
-
-Casilla::Casilla(char _simbolo)
-{
-    this->simbolo = _simbolo;
     this->esEditable = true;
-}
-
-
-void Casilla::asignar_simbolo(char _simbolo)
-{
-    this->simbolo = _simbolo;
+    this->ficha.setLetra(_simbolo);
+    this->ficha.setPuntos(puntos);
 }
 
 void Casilla::bloquear()
@@ -51,5 +14,21 @@ void Casilla::bloquear()
 
 char Casilla::obtenerSimbolo() const
 {
-    return this->simbolo;
+    return this->ficha.obtenerLetra();
+}
+
+bool Casilla::estaBloqueada() const
+{
+    return !this->esEditable;
+}
+
+void Casilla::setFicha(char _sym, int pts)
+{
+    this->ficha.setLetra(_sym);
+    this->ficha.setPuntos(pts);
+}
+
+int Casilla::obtener_puntos() const
+{
+    return this->ficha.obtenerPuntos();
 }

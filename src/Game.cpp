@@ -4,8 +4,6 @@
 
 #include "../include/ManejadorFichas.h"
 #include "../include/Tablero.h"
-//#include "estructuras/Queue.cpp"
-//#include "estructuras/LinkedList.cpp"
 
 #ifdef _WIN32
 #include <windows.h>
@@ -21,10 +19,13 @@ void limpiarPantalla()
 #endif
 }
 
-Game::Game()
+Game::Game() = default;
+
+void Game::play()
 {
     mostrar_menu();
 }
+
 
 //funciona
 void Game::mostrar_menu()
@@ -65,13 +66,13 @@ void Game::mostrar_menu()
             std::cout << "Saliendo...\n" << std::endl;
             break;
         case 1:
-            //            iniciar_juego();
-            tablero.pintar_tablero();
+            iniciar_juego();
+        //tablero.pintar_tablero();
             break;
         case 2:
             //std::cout << "Reportes." << std::endl;
             std::cout << "Prueba cambio de jugadores\n\n";
-            iniciar_juego();
+        //iniciar_juego();
             break;
         default:
             std::cout << "Opcion incorrecta! " << std::endl;
@@ -79,12 +80,6 @@ void Game::mostrar_menu()
         }
         limpiarPantalla();
         std::cin.clear();
-    }
-
-    const int size = jugadores_en_juego_queue.size();
-    for (int i = 0; i < size; ++i)
-    {
-        std::cout << jugadores_en_juego_queue.dequeue().obtener_nombre() << " ";
     }
 }
 
@@ -103,15 +98,9 @@ void Game::ingresar_jugadores()
             std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
             numeroJugadores = -1;
         }
+        if (numeroJugadores > 1) break;
 
-        if (numeroJugadores < 2)
-        {
-            std::cout << "!El numero de jugadores debe ser como mínimo de 2¡" << std::endl;
-        }
-        else
-        {
-            break;
-        }
+        std::cout << "!El numero de jugadores debe ser como mínimo de 2¡" << std::endl;
     }
 
     int aux = 0;
@@ -159,29 +148,96 @@ void Game::asignar_turnos()
 void Game::iniciar_juego()
 {
     ingresar_jugadores();
+    clearView();
     Archivo arc("/home/giovani/Documentos/Tareas/1S2025/EDD/Proyectos/scrabble/prueba.csv");
     //lista_palabras = arc.leer_archivo();
     arc.leer_archivo(&lista_palabras);
-    ManejadorFichas manejador_fichas;
-    manejador_fichas.generarListaFichas(lista_palabras);
-    manejador_fichas.repartirFichas(jugadores_en_juego_queue);
+    ManejadorFichas manejador_fichas(lista_palabras, fichas, jugadores_en_juego_queue);
+    manejador_fichas.repartir();
+    ordenamiento_burbuja(lista_palabras);
 
-
+    const int palabras_len = lista_palabras.size();
     int numero = 0;
-    while (numero != -1)
+    Jugador actual = jugadores_en_juego_queue.dequeue();
+    //cambiar_turno(actual); //
+    while (palabras_len != palabras_jugadas.size() || fichas_en_tablero != fichas.size())
     {
-        std::cout << "Ingresa un numero >>> ";
+        tablero.pintar_tablero();
+        std::cout << R"(
+             _______ OPCIONES ______
+            |  1. INGRESAR FICHA.  |
+            |  2. PISTA.           |
+            | -9. SALIR DEL JUEGO. |
+             -----------------------
+            )" << std::endl;
+        std::cout << "Seleccione una opcion >>> ";
         std::cin >> numero;
-        cambiar_turno();
+
+        // evitar que se ingrese un tipo de dato diferente de opcion
+        //  si el tipo de dato es diferente asignar a opcion un valor de -1
+        if (std::cin.fail())
+        {
+            std::cin.clear();
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            numero = -1;
+        }
+
+        std::cout << "Jugador Actual >>> " << actual.obtener_nombre() << " [ " << actual.obtener_puntos() << ". pts ]"
+            << std::endl;
+        if (numero == -9) break;
+        switch (numero)
+        {
+        case 1:
+            actual.mostrar_fichas_disponibles();
+            int index;
+            std::cout << "Selecciona una opcion (ingresar numero) >>> ";
+            std::cin >> index;
+        //rev
+            std::cout << "Ingresa una coordenada [FILA],[COLUMNA] Ej: 3,1  >>> ";
+            int x, y;
+            char coma;
+            std::cin >> y >> coma >> x;
+            colocarFicha(y, x, index, actual);
+            break;
+        case 2:
+            ver_pista();
+            break;
+        default:
+            std::cout << "Opcion no valida!" << std::endl;
+            break;
+        }
     }
 }
 
-//funciona?
-void Game::cambiar_turno()
+void Game::colocarFicha(const int y, const int x, const int index, Jugador& actual)
 {
-    Jugador actual = jugadores_en_juego_queue.dequeue();
-    std::cout << "Jugador actual >>> " << actual.obtener_nombre() << std::endl;
-    actual.mostrar_fichas_disponibles();
+    if (tablero.mov_valido(y - 1, x - 1))
+    {
+        if (index - 1 > actual.obtener_num_fichas_restantes())
+        {
+            return;
+        }
+        const auto aux = actual.obtener_ficha(index - 1);
+        tablero.colocar(
+            y - 1,
+            x - 1,
+            aux.obtenerLetra(),
+            aux.obtenerPuntos());
+        actual.eliminar(index - 1);
+        actual.aumentar_movimiento();
+        analizar(actual); //analizar palabras
+        fichas_en_tablero++;
+
+        jugadores_en_juego_queue.enqueue(actual);
+        actual = jugadores_en_juego_queue.dequeue();
+    }
+}
+
+
+//funciona?
+void Game::cambiar_turno(Jugador& actual)
+{
+    actual = jugadores_en_juego_queue.dequeue();
     jugadores_en_juego_queue.enqueue(actual);
 }
 
@@ -223,15 +279,113 @@ void Game::ver_pista()
 {
     for (int i = 0; i < this->lista_palabras.size(); ++i)
     {
-        std::string whitespace = (i % 3 == 0) ? "\n" : " "; //operador ternario
         std::cout
-            << std::endl
             << (i + 1) << ".- "
             << lista_palabras.search(i)
-            << whitespace;
+            << "   ";
+    }
+    std::cout << std::endl;
+}
+
+
+void Game::clearView()
+{
+    std::cout << std::endl << std::endl;
+}
+
+void Game::analizar(Jugador& actual)
+{
+    for (int i = 0; i < lista_palabras.size(); ++i)
+    {
+        auto palabra = lista_palabras.search(i);
+        if (palabra_encontrada(this->tablero, palabra) != -1)
+        {
+            actual.sumar_puntos(palabra_encontrada(this->tablero, palabra));
+            palabras_jugadas.push(palabra);
+            lista_palabras.deleteAt(i);
+        }
     }
 }
 
-// std::cout << "letra   puntos";
-// std::cout << "  ↓       ↓";
-// std::cout << "  A     [10].";
+int Game::palabra_encontrada(Tablero& _tablero, const std::string& palabra)
+{
+    if (busqueda_horizontal(_tablero, palabra) != -1) return busqueda_horizontal(_tablero, palabra);
+
+    if (busqueda_vertical(_tablero, palabra) != -1) return busqueda_vertical(_tablero, palabra);
+
+    return -1;
+}
+
+int Game::busqueda_horizontal(Tablero& _tablero, const std::string& palabra)
+{
+    int puntos = 0, temp = 1;
+    for (int fila = 0; fila < Tablero::FILAS; ++fila)
+    {
+        int columna = 0, k = 0;
+        while (columna < Tablero::COLUMNAS)
+        {
+            if (k == 0 && columna > Tablero::COLUMNAS - palabra.length())
+            {
+                break;
+            }
+
+            if (_tablero.casillas[fila][columna]->obtenerSimbolo() == ' '
+                || _tablero.casillas[fila][columna]->obtenerSimbolo() == '#'
+                || !_tablero.ocurrencia(fila, columna, palabra[k]))
+            {
+                temp = 1;
+                puntos = 0;
+                k = 0;
+            }
+            else
+            {
+                k++;
+                temp++;
+                puntos += _tablero.casillas[fila][columna]->obtener_puntos();
+                if (temp == palabra.length())
+                {
+                    return puntos;
+                }
+            }
+            columna++;
+        }
+    }
+    return -1;
+}
+
+int Game::busqueda_vertical(Tablero& _tablero, const std::string& palabra)
+{
+    int puntos = 0, temp = 1;
+    for (int columna = 0; columna < Tablero::COLUMNAS; ++columna)
+    {
+        int fila = 0, k = 0;
+        while (fila < Tablero::FILAS)
+        {
+            if (k == 0 && fila > Tablero::FILAS - palabra.length())
+            {
+                break;
+            }
+
+            if (_tablero.casillas[fila][columna]->obtenerSimbolo() == ' '
+                || _tablero.casillas[fila][columna]->obtenerSimbolo() == '#'
+                || !_tablero.ocurrencia(fila, columna, palabra[k]))
+            {
+                temp = 1;
+                puntos = 0;
+                k = 0;
+            }
+            else
+            {
+                k++;
+                temp++;
+                puntos += _tablero.casillas[fila][columna]->obtener_puntos();
+                if (temp == palabra.length())
+                {
+                    return puntos;
+                }
+            }
+            fila++;
+        }
+    }
+    return -1;
+}

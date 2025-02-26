@@ -8,13 +8,11 @@ class Archivo
 {
 private:
     std::string path;
-    LinkedList<std::string>* palabras;
 
 public:
     explicit Archivo(std::string _path)
     {
         this->path = std::move(_path);
-        this->palabras = nullptr;
     }
 
     /**
@@ -22,7 +20,7 @@ public:
      * @return lista de palabras
      */
     //[[nodiscard]] LinkedList<std::string>
-    void leer_archivo(LinkedList<std::string>* listado)
+    void leer_archivo(LinkedList<std::string>* listado) const
     {
         //  LinkedList<std::string> palabras;
         std::ifstream archivo(this->path);

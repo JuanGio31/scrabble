@@ -35,6 +35,7 @@ bool LinkedList<T>::contains(T object)
         {
             return true;
         }
+        current = current->next;
     }
     return false;
 }
@@ -98,11 +99,13 @@ template <typename T>
 void LinkedList<T>::deleteAtHead()
 {
     if (this->head == nullptr)
+    {
         throw std::runtime_error("Lista vacia");
-
+    }
     auto* temp = this->head;
     this->head = this->head->next;
     delete temp;
+    temp = nullptr;
     --this->_size;
 }
 
@@ -177,6 +180,7 @@ LinkedList<T>::~LinkedList()
         auto* aux = this->head;
         this->head = this->head->next;
         delete aux;
+        aux = nullptr;
     }
 }
 
@@ -189,13 +193,12 @@ LinkedList<T>::~LinkedList()
 template <typename T>
 bool LinkedList<T>::deleteAt(int index)
 {
-    // verificar si el indice esta dentro del rango
-    if (index < 0 || index > _size)
+    // Verificar si el índice está dentro del rango válido
+    if (index < 0 || index >= _size)
     {
         return false;
     }
 
-    Node* aEliminar = nullptr;
     if (index == 0)
     {
         deleteAtHead();
@@ -206,17 +209,102 @@ bool LinkedList<T>::deleteAt(int index)
     }
     else
     {
+        // Eliminar un nodo en el medio de la lista
         Node* current = this->head;
         // Recorrer hasta el nodo anterior al que se desea eliminar
         for (int i = 0; i < index - 1; ++i)
         {
             current = current->next;
         }
-        aEliminar = current->next;
+        Node* aEliminar = current->next;
         current->next = aEliminar->next;
+        delete aEliminar; // Liberar la memoria del nodo
+        --this->_size; // Decrementar el tamaño de la lista
+    }
+    return true;
+}
+
+
+template <typename T>
+typename LinkedList<T>::Node* LinkedList<T>::obtenerCola(Node* _head)
+{
+    while (_head && _head->next)
+    {
+        _head = _head->next;
+    }
+    return _head;
+}
+
+template <typename T>
+typename LinkedList<T>::Node* LinkedList<T>::quick_sort_rec(Node* _head, Node* cola)
+{
+    if (!_head || _head == cola)
+    {
+        return _head;
     }
 
-    delete aEliminar;
-    --this->_size;
-    return true;
+    Node *newHead = nullptr, *newCola = nullptr;
+    Node* pivote = particion(_head, cola, &newHead, &newCola);
+
+    if (newHead != pivote)
+    {
+        auto* temp = newHead;
+        while (temp->next != pivote)
+        {
+            temp = temp->next;
+        }
+        temp->next = nullptr;
+    }
+
+    pivote->next = quick_sort_rec(pivote->next, newCola);
+    return newHead;
+}
+
+template <typename T>
+typename LinkedList<T>::Node* LinkedList<T>::particion(Node* inicio, Node* fin, Node** newHead, Node** newCola)
+{
+    auto pivote = fin;
+    Node *prev = nullptr, *curr = inicio, *cola = pivote, *temp = nullptr;
+
+    *newHead = nullptr;
+    *newCola = pivote;
+
+    while (curr != pivote)
+    {
+        if (curr->value < pivote->value)
+        {
+            if (*newHead == nullptr)
+            {
+                *newHead = curr;
+            }
+            prev = curr;
+            curr = curr->next;
+        }
+        else
+        {
+            if (prev)
+            {
+                prev->next = curr->next;
+            }
+            temp = curr->next;
+            curr->next = nullptr;
+            cola->next = curr;
+            cola = curr;
+            curr = temp;
+        }
+    }
+
+    if (*newHead == nullptr)
+    {
+        *newHead = pivote;
+    }
+    *newCola = cola;
+
+    return pivote;
+}
+
+template <typename T>
+void LinkedList<T>::quick_sort()
+{
+    this->head = quick_sort_rec(this->head, this->obtenerCola(this->head));
 }

@@ -27,7 +27,37 @@ public:
 
     T peek();
 
-    int size() const;
+    [[nodiscard]] int size() const;
+
+    Stack(const Stack& other)
+        : top(other.top),
+          _size(other._size)
+    {
+    }
+
+    Stack(Stack&& other) noexcept
+        : top(other.top),
+          _size(other._size)
+    {
+    }
+
+    Stack& operator=(const Stack& other)
+    {
+        if (this == &other)
+            return *this;
+        top = other.top;
+        _size = other._size;
+        return *this;
+    }
+
+    Stack& operator=(Stack&& other) noexcept
+    {
+        if (this == &other)
+            return *this;
+        top = other.top;
+        _size = other._size;
+        return *this;
+    }
 };
 
 #endif //STACK_H

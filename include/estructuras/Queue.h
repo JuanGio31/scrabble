@@ -29,9 +29,41 @@ public:
 
     T peek();
 
+    void rotar();
+
     [[nodiscard]] bool empty() const;
 
     [[nodiscard]] int size() const;
+
+    Queue(const Queue& other)
+        : front(other.front),
+          _size(other._size)
+    {
+    }
+
+    Queue(Queue&& other) noexcept
+        : front(other.front),
+          _size(other._size)
+    {
+    }
+
+    Queue& operator=(const Queue& other)
+    {
+        if (this == &other)
+            return *this;
+        front = other.front;
+        _size = other._size;
+        return *this;
+    }
+
+    Queue& operator=(Queue&& other) noexcept
+    {
+        if (this == &other)
+            return *this;
+        front = other.front;
+        _size = other._size;
+        return *this;
+    }
 };
 
 #endif //QUEUE_H

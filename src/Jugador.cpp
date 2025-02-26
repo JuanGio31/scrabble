@@ -7,12 +7,19 @@ Jugador::Jugador()
 {
     this->nombre = "";
     this->movimientos = 0;
+    this->puntos = 0;
 }
 
-Jugador::Jugador(std::string& _nombre)
+Jugador::Jugador(const std::string& _nombre)
 {
     this->nombre = _nombre;
     this->movimientos = 0;
+    this->puntos = 0;
+}
+
+void Jugador::restar_puntos(int pts)
+{
+    this->puntos = this->puntos - pts;
 }
 
 void Jugador::aumentar_movimiento()
@@ -30,12 +37,22 @@ void Jugador::aumentar_movimiento()
     return this->movimientos;
 }
 
+int Jugador::obtener_puntos() const
+{
+    return this->puntos;
+}
+
+void Jugador::sumar_puntos(int pts)
+{
+    this->puntos += pts;
+}
+
 void Jugador::set_nombre(std::string _nombre)
 {
     this->nombre = std::move(_nombre);
 }
 
-bool Jugador::existe(int index)
+bool Jugador::existe(const int index)
 {
     try
     {
@@ -48,18 +65,17 @@ bool Jugador::existe(int index)
     }
 }
 
-void Jugador::eliminar(int index)
+void Jugador::eliminar(const int index)
 {
     lista_fichas.deleteAt(index);
 }
 
-LinkedList<Ficha> Jugador::obetener_fichas_list()
+void Jugador::ordenar()
 {
-    return this->lista_fichas;
+    this->lista_fichas.quick_sort();
 }
 
-
-Ficha Jugador::obtener_ficha(int index)
+Ficha Jugador::obtener_ficha(const int index)
 {
     if (existe(index))
     {
@@ -74,9 +90,9 @@ void Jugador::mostrar_fichas_disponibles()
     std::cout << std::endl;;
     if (!lista_fichas.empty())
     {
-        std::cout << "\nletra   puntos" << std::endl;
+        std::cout << "letra   puntos" << std::endl;
         std::cout << "  ↓       ↓" << std::endl;
-        std::cout << " {A}     [10]." << std::endl << std::endl;
+        std::cout << " {A}     [10]." << std::endl;
 
         const int size = this->lista_fichas.size(); //obtener tamanio de la lista
 
@@ -104,5 +120,10 @@ void Jugador::mostrar_fichas_disponibles()
 
 void Jugador::insertar(Ficha ficha)
 {
-    this->lista_fichas.insertAtEnd(ficha);
+    this->lista_fichas.insertAtEnd({ficha.obtenerLetra(), ficha.obtenerPuntos()});
+}
+
+int Jugador::obtener_num_fichas_restantes() const
+{
+    return this->lista_fichas.size();
 }

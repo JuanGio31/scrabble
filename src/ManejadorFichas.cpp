@@ -1,92 +1,70 @@
 #include "../include/ManejadorFichas.h"
-//#include "estructuras/LinkedList.cpp"
+// #include "estructuras/LinkedList.cpp"
 #include <iostream>
 
 #include "../include/utilidades/Utilidad.h"
 
-ManejadorFichas::ManejadorFichas()
+void ManejadorFichas::generarFichas() const
 {
-    this->lista_fichas = new LinkedList<Ficha>;
-}
+    const int n = lista_palabras.size(); // obtener el tamanio de la lista
 
-
-void ManejadorFichas::generarListaFichas(LinkedList<std::string> lista) const
-{
-    const int n = lista.size(); //obtener el tamanio de la lista
-    auto* arr = new std::string[n];
-
-    //pasar los elementos de la lista a aun array
+    // insertar las fichas en la lista de fichas
     for (int i = 0; i < n; ++i)
     {
-        arr[i] = lista.search(i);
-        //lista.deleteAtHead();
-    }
-
-    //insertar las fichas en la lista de fichas
-    for (int i = 0; i < n; ++i)
-    {
-        const char* arreglo = arr[i].c_str();
+        const char* arreglo = lista_palabras.search(i).c_str(); //arr[i].c_str();
         const char* ptr = arreglo;
         while (*ptr != '\0')
         {
-            this->lista_fichas->insertAtEnd({*ptr, Utilidad::getRandomInt(1, 5)});
+            // this->lista_fichas->insertAtEnd({*ptr, Utilidad::getRandomInt(1, 5)});
+            fichas_list.insertAtEnd({*ptr, Utilidad::getRandomInt(1, 5)});
             ptr++;
         }
     }
 }
 
-// error -> verificar referencia.
-void ManejadorFichas::repartirFichas(Queue<Jugador>& jugadores) const
+ManejadorFichas::ManejadorFichas(LinkedList<std::string>& lista_palabras, LinkedList<Ficha>& fichas_list,
+                                 Queue<Jugador>& jugadores_en_juego): lista_palabras(lista_palabras),
+                                                                      fichas_list(fichas_list),
+                                                                      jugadores_en_juego(jugadores_en_juego)
 {
-    // for (int i = 0; i < lista_fichas->size(); ++i)
-    // {
-    //     std::cout << (i + 1) << ".- " << lista_fichas->search(i).obtenerLetra() << " <" << lista_fichas->search(i).
-    //         obtenerPuntos() << ">" << std::endl;
-    // }
-
-
-    const int n = this->lista_fichas->size();
-    const int div = n / jugadores.size();
-    std::cout << "lim-> " << div << std::endl;
-
-    const int size_jugadores = jugadores.size();
-    auto* arr = new Jugador[size_jugadores];
-    for (int i = 0; i < size_jugadores; ++i)
-    {
-        //        arr[i] = jugadores->dequeue();
-        arr[i] = jugadores.dequeue();
-    }
-
-    int index = -1;
-    for (int i = 0; i < size_jugadores - 1; ++i)
-    {
-        int k = 0;
-        while (k < div + 1)
-        {
-            ++index;
-            //arr[i].obetener_fichas_list().insertAtEnd(this->lista_fichas->search(index));
-            arr[i].insertar(this->lista_fichas->search(index));
-            ++k;
-        }
-    }
-
-    for (int i = index; i < n; ++i)
-    {
-        //arr[size_jugadores - 1].obetener_fichas_list().insertAtEnd(this->lista_fichas->search(index));
-        arr[size_jugadores - 1].insertar(this->lista_fichas->search(i));
-        index++;
-    }
-
-    for (int i = 0; i < size_jugadores; ++i)
-    {
-        //jugadores->enqueue(arr[i]);
-        jugadores.enqueue(arr[i]);
-    }
-
-    delete [] arr;
 }
 
-ManejadorFichas::~ManejadorFichas()
+void ManejadorFichas::repartir() const
 {
-    //delete lista_fichas;
+    this->generarFichas();
+    const int n = fichas_list.size();
+    const int div = n / jugadores_en_juego.size();
+    const int size_jugadores = this->jugadores_en_juego.size();
+
+    int index = 0;
+    for (int i = 0; i < size_jugadores; ++i)
+    {
+        auto actual = jugadores_en_juego.dequeue();
+        if (index == div)
+        {
+            int resto = fichas_list.size() - div;
+            while (resto < n)
+            {
+                actual.insertar(fichas_list.search(resto));
+                resto++;
+            }
+        }
+        else
+        {
+            for (index = 0; index < div; ++index)
+            {
+                actual.insertar(fichas_list.search(index));
+            }
+        }
+        jugadores_en_juego.enqueue(actual); //aqui ocurre el error
+    }
+
+   // ordenarFichas();
+}
+
+void ManejadorFichas::ordenarFichas() const
+{
+    auto aux = jugadores_en_juego.dequeue();
+    aux.ordenar();
+    jugadores_en_juego.enqueue(aux);
 }

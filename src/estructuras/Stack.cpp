@@ -53,11 +53,11 @@ bool Stack<T>::empty()
 template <typename T>
 void Stack<T>::push(T _data)
 {
-    // Nodo* aux = new Nodo;
-    // aux->value = _data;
-    // aux->next = top;
-    auto* temp = Nodo(_data, top);
-    top = temp;
+    Nodo* aux = new Nodo(_data);
+    //aux->value = _data;
+    aux->next = top;
+    //auto* temp = Nodo(_data, top);
+    top = aux;
     _size++;
 }
 

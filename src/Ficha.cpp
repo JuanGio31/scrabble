@@ -23,6 +23,16 @@ char Ficha::obtenerLetra() const
     return this->letra;
 }
 
+void Ficha::setLetra(char _sym)
+{
+    this->letra = _sym;
+}
+
+void Ficha::setPuntos(int _pts)
+{
+    this->puntos = _pts;
+}
+
 int Ficha::obtenerPuntos() const
 {
     return this->puntos;

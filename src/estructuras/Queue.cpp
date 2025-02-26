@@ -34,7 +34,8 @@ T Queue<T>::dequeue()
 {
     if (this->front == nullptr) throw std::runtime_error("Cola vacia");
 
-    T data = this->front->value;
+    //T data = this->front->value;
+    T data = std::move(this->front->value);
     auto* temp = this->front;
     this->front = this->front->next;
     delete temp;
@@ -93,4 +94,11 @@ Queue<T>::~Queue()
     {
         dequeue();
     }
+}
+
+template <typename T>
+void Queue<T>::rotar()
+{
+    auto* aux = this->dequeue();
+    this->enqueue(aux);
 }

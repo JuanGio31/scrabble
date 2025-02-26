@@ -1,24 +1,25 @@
 #ifndef CASILLA_H
 #define CASILLA_H
+#include "Ficha.h"
 
 class Casilla
 {
 private:
-    char simbolo;
-    // int posX;
-    // int posY;
+    Ficha ficha;
     bool esEditable;
 
 public:
-    // Casilla(char _simbolo, int pos_x, int pos_y);
-    // Casilla(int pos_x, int pos_y);
-    explicit Casilla(char _simbolo);
-    Casilla();
+    explicit Casilla(char _simbolo, int puntos);
 
-    void asignar_simbolo(char _simbolo);
     void bloquear();
+
     [[nodiscard]] char obtenerSimbolo() const;
-    // [[nodiscard]] int obtenerPosX() const;
-    // [[nodiscard]] int obtenerPosY() const;
+
+    [[nodiscard]] bool estaBloqueada() const;
+
+    void setFicha(char _sym, int pts);
+
+    [[nodiscard]] int obtener_puntos() const;
+
 };
 #endif //CASILLA_H

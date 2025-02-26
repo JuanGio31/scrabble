@@ -5,20 +5,23 @@
 #include "Jugador.h"
 #include "estructuras/LinkedList.h"
 #include "estructuras/Queue.h"
-//#include "../src/estructuras/Queue.cpp"
 
 class ManejadorFichas
 {
 private:
-    LinkedList<Ficha>* lista_fichas;
+    LinkedList<std::string>& lista_palabras;
+    LinkedList<Ficha>& fichas_list;
+    Queue<Jugador>& jugadores_en_juego;
+
+    void generarFichas() const;
+    void ordenarFichas() const;
 
 public:
-    ManejadorFichas();
+    ManejadorFichas(
+        LinkedList<std::string>& lista_palabras,
+        LinkedList<Ficha>& fichas_list,
+        Queue<Jugador>& jugadores_en_juego);
 
-    ~ManejadorFichas();
-
-    void generarListaFichas(LinkedList<std::string> lista) const;
-
-    void repartirFichas(Queue<Jugador>& jugadores) const;
+    void repartir() const;
 };
 #endif //MANEJADORFICHAS_H

@@ -2,7 +2,6 @@
 
 #include <iostream>
 
-
 Tablero::Tablero()
 {
     iniciar_tablero();
@@ -15,8 +14,7 @@ void Tablero::iniciar_tablero()
         for (auto& j : casilla)
         {
             //32 representa un espacio en blanco
-            //casillas[i][j] = new Casilla(32, i, j);
-            j = new Casilla(32);
+            j = new Casilla(32, 0);
         }
     }
     bloquear_casilla();
@@ -32,9 +30,8 @@ void Tablero::bloquear_casilla() const
         int col = Utilidad::getRandomInt(1, COLUMNAS) - 1;; //rand() % COLUMNAS;
         if (casillas[fila][col]->obtenerSimbolo() == 32) //32 representa un espacio
         {
-            casillas[fila][col]->asignar_simbolo('#');
+            casillas[fila][col]->setFicha('#', 0);
             casillas[fila][col]->bloquear();
-            //casillas[fila][col] = new Casilla(); //new Casilla(fila, col);
             contador++;
         }
     }
@@ -73,6 +70,27 @@ void Tablero::pintar_tablero() const
         std::cout << std::endl;
     }
 }
+
+bool Tablero::mov_valido(int fila, int columna) const
+{
+    if (casillas[fila][columna]->obtenerSimbolo() == ' ')
+    {
+        return true;
+    }
+
+    return fila >= 0 && fila < 15 && columna >= 0 && columna < 15;
+}
+
+void Tablero::colocar(int fila, int columna, char sym, int pts) const
+{
+    casillas[fila][columna]->setFicha(sym, pts);
+}
+
+bool Tablero::ocurrencia(int fila, int columna, char sym)
+{
+    return casillas[fila][columna]->obtenerSimbolo() == sym;
+}
+
 
 Tablero::~Tablero()
 {
