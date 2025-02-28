@@ -39,7 +39,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "scrabble::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-scrabble-Debug-872f1c7271f5787ace46.json",
+					"jsonFile" : "target-scrabble-Debug-fe3ab629dcc303744f59.json",
 					"name" : "scrabble",
 					"projectIndex" : 0
 				}
@@ -49,7 +49,7 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "/home/giovani/Documentos/Tareas/1S2025/EDD/Proyectos/scrabble/cmake-build-debug",
+		"build" : "/home/giovani/Documentos/Tareas/1S2025/EDD/Proyectos/scrabble/cmake-build-debug-coverage",
 		"source" : "/home/giovani/Documentos/Tareas/1S2025/EDD/Proyectos/scrabble"
 	},
 	"version" : 

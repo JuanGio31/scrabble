@@ -44003,6 +44003,7 @@ int Jugador::obtener_puntos() const
 
 void Jugador::sumar_puntos(int pts)
 {
+    std::cout << "Palabra encontrada! +" << pts << " pts." << std::endl;
     this->puntos += pts;
 }
 

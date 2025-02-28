@@ -199,6 +199,9 @@ CMakeFiles/scrabble.dir/src/Game.cpp.o.ddi: \
  /home/giovani/Documentos/Tareas/1S2025/EDD/Proyectos/scrabble/src/../include/estructuras/LinkedList.h \
  /home/giovani/Documentos/Tareas/1S2025/EDD/Proyectos/scrabble/src/../include/../src/estructuras/LinkedList.cpp \
  /home/giovani/Documentos/Tareas/1S2025/EDD/Proyectos/scrabble/src/../include/../src/estructuras/../../include/estructuras/LinkedList.h \
+ /home/giovani/Documentos/Tareas/1S2025/EDD/Proyectos/scrabble/src/../include/Reporte.h \
+ /home/giovani/Documentos/Tareas/1S2025/EDD/Proyectos/scrabble/src/../include/estructuras/Queue.h \
+ /home/giovani/Documentos/Tareas/1S2025/EDD/Proyectos/scrabble/src/../include/estructuras/Stack.h \
  /home/giovani/Documentos/Tareas/1S2025/EDD/Proyectos/scrabble/src/../include/Tablero.h \
  /home/giovani/Documentos/Tareas/1S2025/EDD/Proyectos/scrabble/src/../include/Casilla.h \
  /home/giovani/Documentos/Tareas/1S2025/EDD/Proyectos/scrabble/src/../include/utilidades/Utilidad.h \
@@ -230,7 +233,6 @@ CMakeFiles/scrabble.dir/src/Game.cpp.o.ddi: \
  /usr/include/c++/14/bits/stl_numeric.h \
  /usr/include/c++/14/pstl/glue_numeric_defs.h \
  /usr/include/c++/14/pstl/execution_defs.h \
- /home/giovani/Documentos/Tareas/1S2025/EDD/Proyectos/scrabble/src/../include/estructuras/Queue.h \
  /home/giovani/Documentos/Tareas/1S2025/EDD/Proyectos/scrabble/src/../include/../src/estructuras/Queue.cpp \
  /home/giovani/Documentos/Tareas/1S2025/EDD/Proyectos/scrabble/src/../include/../src/estructuras/../../include/estructuras/Queue.h \
  /home/giovani/Documentos/Tareas/1S2025/EDD/Proyectos/scrabble/src/../include/../src/Archivo.cpp \
@@ -239,7 +241,6 @@ CMakeFiles/scrabble.dir/src/Game.cpp.o.ddi: \
  /usr/include/x86_64-linux-gnu/c++/14/bits/c++io.h \
  /usr/include/c++/14/bits/fstream.tcc \
  /home/giovani/Documentos/Tareas/1S2025/EDD/Proyectos/scrabble/src/../include/../src/../include/estructuras/LinkedList.h \
- /home/giovani/Documentos/Tareas/1S2025/EDD/Proyectos/scrabble/src/../include/estructuras/Stack.h \
  /home/giovani/Documentos/Tareas/1S2025/EDD/Proyectos/scrabble/src/../include/../src/estructuras/Stack.cpp \
  /home/giovani/Documentos/Tareas/1S2025/EDD/Proyectos/scrabble/src/../include/../src/estructuras/../../include/estructuras/Stack.h \
  /home/giovani/Documentos/Tareas/1S2025/EDD/Proyectos/scrabble/src/../include/ManejadorFichas.h \

@@ -33354,7 +33354,10 @@ private:
     {
         T value;
         Node* next;
-        explicit Node(T val, Node* nxt = nullptr) : value(val), next(nxt) {}
+
+        explicit Node(T val, Node* nxt = nullptr) : value(val), next(nxt)
+        {
+        }
     } * front;
 
     int _size;
@@ -33375,6 +33378,11 @@ public:
     [[nodiscard]] bool empty() const;
 
     [[nodiscard]] int size() const;
+
+    Node* getFront()
+    {
+        return this->front;
+    }
 
     Queue(const Queue& other)
         : front(other.front),
@@ -68993,7 +69001,7 @@ void ManejadorFichas::repartir() const
         auto actual = jugadores_en_juego.dequeue();
         if (index == div)
         {
-            int resto = fichas_list.size() - div;
+            int resto = fichas_list.size() - div - 1;
             while (resto < n)
             {
                 actual.insertar(fichas_list.search(resto));

@@ -120,7 +120,8 @@
 				14,
 				16,
 				18,
-				21
+				21,
+				22
 			]
 		}
 	],
@@ -246,6 +247,11 @@
 		{
 			"backtrace" : 1,
 			"path" : "include/estructuras/Stack.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "include/Reporte.h",
 			"sourceGroupIndex" : 1
 		}
 	],

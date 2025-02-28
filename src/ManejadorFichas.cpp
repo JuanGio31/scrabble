@@ -42,7 +42,7 @@ void ManejadorFichas::repartir() const
         auto actual = jugadores_en_juego.dequeue();
         if (index == div)
         {
-            int resto = fichas_list.size() - div;
+            int resto = fichas_list.size() - div - 1;
             while (resto < n)
             {
                 actual.insertar(fichas_list.search(resto));
@@ -59,7 +59,7 @@ void ManejadorFichas::repartir() const
         jugadores_en_juego.enqueue(actual); //aqui ocurre el error
     }
 
-   // ordenarFichas();
+    // ordenarFichas();
 }
 
 void ManejadorFichas::ordenarFichas() const

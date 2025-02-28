@@ -19,7 +19,7 @@ void limpiarPantalla()
 #endif
 }
 
-Game::Game() = default;
+//Game::Game() = default;
 
 void Game::play()
 {
@@ -44,7 +44,6 @@ void Game::mostrar_menu()
         std::cout << R"(
             _________ MENU ________
             | 1. INICIAR JUEGO.   |
-            | 2. ESTADISTICAS.    |
             | 0. SALIR DEL JUEGO. |
             -----------------------
             )" << std::endl;
@@ -67,13 +66,7 @@ void Game::mostrar_menu()
             break;
         case 1:
             iniciar_juego();
-        //tablero.pintar_tablero();
-            break;
-        case 2:
-            //std::cout << "Reportes." << std::endl;
-            std::cout << "Prueba cambio de jugadores\n\n";
-        //iniciar_juego();
-            break;
+            return;
         default:
             std::cout << "Opcion incorrecta! " << std::endl;
             break;
@@ -160,9 +153,20 @@ void Game::iniciar_juego()
     int numero = 0;
     Jugador actual = jugadores_en_juego_queue.dequeue();
     //cambiar_turno(actual); //
+
+    //pintar por primera vez el tablero.
+    tablero.pintar_tablero();
     while (palabras_len != palabras_jugadas.size() || fichas_en_tablero != fichas.size())
     {
-        tablero.pintar_tablero();
+        if (actual.obtener_num_fichas_restantes() == 0)
+        {
+            jugadores_en_juego_queue.enqueue(actual);
+            actual = jugadores_en_juego_queue.dequeue();
+            continue;
+        }
+        std::cout << "\nJugador Actual >>> " << actual.obtener_nombre() << " [ "
+            << actual.obtener_puntos() << ". pts ]" << std::endl;
+
         std::cout << R"(
              _______ OPCIONES ______
             |  1. INGRESAR FICHA.  |
@@ -182,17 +186,15 @@ void Game::iniciar_juego()
             numero = -1;
         }
 
-        std::cout << "Jugador Actual >>> " << actual.obtener_nombre() << " [ " << actual.obtener_puntos() << ". pts ]"
-            << std::endl;
         if (numero == -9) break;
         switch (numero)
         {
         case 1:
+            tablero.pintar_tablero();
             actual.mostrar_fichas_disponibles();
             int index;
             std::cout << "Selecciona una opcion (ingresar numero) >>> ";
             std::cin >> index;
-        //rev
             std::cout << "Ingresa una coordenada [FILA],[COLUMNA] Ej: 3,1  >>> ";
             int x, y;
             char coma;
@@ -207,6 +209,9 @@ void Game::iniciar_juego()
             break;
         }
     }
+    //volver a colocar en la cola al jugador.
+    jugadores_en_juego_queue.enqueue(actual);
+    ver_reportes();
 }
 
 void Game::colocarFicha(const int y, const int x, const int index, Jugador& actual)
@@ -215,6 +220,7 @@ void Game::colocarFicha(const int y, const int x, const int index, Jugador& actu
     {
         if (index - 1 > actual.obtener_num_fichas_restantes())
         {
+            std::cout << "Fuera del limite!" << std::endl;
             return;
         }
         const auto aux = actual.obtener_ficha(index - 1);
@@ -223,22 +229,17 @@ void Game::colocarFicha(const int y, const int x, const int index, Jugador& actu
             x - 1,
             aux.obtenerLetra(),
             aux.obtenerPuntos());
-        actual.eliminar(index - 1);
-        actual.aumentar_movimiento();
-        analizar(actual); //analizar palabras
-        fichas_en_tablero++;
+        actual.eliminar(index - 1); //eliminar ficha del la lista del jugador
+        actual.aumentar_movimiento(); //incrementar el numero de movimientos
+        analizar(actual); //analizar palabras, sumar pts si se encuentra una palabra.
+        fichas_en_tablero++; //incrementar el numero de fichas en el tablero
 
+        //cambiar de jugador
         jugadores_en_juego_queue.enqueue(actual);
         actual = jugadores_en_juego_queue.dequeue();
+
+        clearView();
     }
-}
-
-
-//funciona?
-void Game::cambiar_turno(Jugador& actual)
-{
-    actual = jugadores_en_juego_queue.dequeue();
-    jugadores_en_juego_queue.enqueue(actual);
 }
 
 //sin probar
@@ -388,4 +389,13 @@ int Game::busqueda_vertical(Tablero& _tablero, const std::string& palabra)
         }
     }
     return -1;
+}
+
+Game::Game(): reporte(jugadores_en_juego_queue, palabras_jugadas, lista_palabras)
+{
+}
+
+void Game::ver_reportes()
+{
+    this->reporte.imprimirReporte();
 }

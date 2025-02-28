@@ -87482,6 +87482,313 @@ public:
     [[nodiscard]] int obtener_num_fichas_restantes() const;
 };
 # 7 "/home/giovani/Documentos/Tareas/1S2025/EDD/Proyectos/scrabble/include/Game.h" 2
+# 1 "/home/giovani/Documentos/Tareas/1S2025/EDD/Proyectos/scrabble/include/Reporte.h" 1
+
+
+# 1 "/usr/include/c++/14/iostream" 1 3
+# 36 "/usr/include/c++/14/iostream" 3
+       
+# 37 "/usr/include/c++/14/iostream" 3
+
+
+
+
+
+
+
+
+# 44 "/usr/include/c++/14/iostream" 3
+namespace std __attribute__ ((__visibility__ ("default")))
+{
+
+# 62 "/usr/include/c++/14/iostream" 3
+  extern istream cin;
+  extern ostream cout;
+  extern ostream cerr;
+  extern ostream clog;
+
+
+  extern wistream wcin;
+  extern wostream wcout;
+  extern wostream wcerr;
+  extern wostream wclog;
+# 82 "/usr/include/c++/14/iostream" 3
+  __extension__ __asm (".globl _ZSt21ios_base_library_initv");
+
+
+
+}
+# 4 "/home/giovani/Documentos/Tareas/1S2025/EDD/Proyectos/scrabble/include/Reporte.h" 2
+
+
+# 1 "/home/giovani/Documentos/Tareas/1S2025/EDD/Proyectos/scrabble/include/estructuras/Queue.h" 1
+
+
+
+
+
+
+
+
+# 8 "/home/giovani/Documentos/Tareas/1S2025/EDD/Proyectos/scrabble/include/estructuras/Queue.h"
+template <typename T>
+class Queue
+{
+private:
+    struct Node
+    {
+        T value;
+        Node* next;
+
+        explicit Node(T val, Node* nxt = nullptr) : value(val), next(nxt)
+        {
+        }
+    } * front;
+
+    int _size;
+
+public:
+    Queue();
+
+    ~Queue();
+
+    void enqueue(T data);
+
+    T dequeue();
+
+    T peek();
+
+    void rotar();
+
+    [[nodiscard]] bool empty() const;
+
+    [[nodiscard]] int size() const;
+
+    Node* getFront()
+    {
+        return this->front;
+    }
+
+    Queue(const Queue& other)
+        : front(other.front),
+          _size(other._size)
+    {
+    }
+
+    Queue(Queue&& other) noexcept
+        : front(other.front),
+          _size(other._size)
+    {
+    }
+
+    Queue& operator=(const Queue& other)
+    {
+        if (this == &other)
+            return *this;
+        front = other.front;
+        _size = other._size;
+        return *this;
+    }
+
+    Queue& operator=(Queue&& other) noexcept
+    {
+        if (this == &other)
+            return *this;
+        front = other.front;
+        _size = other._size;
+        return *this;
+    }
+};
+# 7 "/home/giovani/Documentos/Tareas/1S2025/EDD/Proyectos/scrabble/include/Reporte.h" 2
+# 1 "/home/giovani/Documentos/Tareas/1S2025/EDD/Proyectos/scrabble/include/estructuras/Stack.h" 1
+
+
+
+template <typename T>
+class Stack
+{
+private:
+    struct Nodo
+    {
+        T value;
+        Nodo* next;
+        explicit Nodo(T val, Nodo* nxt = nullptr) : value(val), next(nxt) {}
+    } * top;
+
+    int _size;
+
+public:
+    Stack();
+
+    ~Stack();
+
+    void push(T _data);
+
+    bool empty();
+
+    T pop();
+
+    T peek();
+
+    [[nodiscard]] int size() const;
+
+    Stack(const Stack& other)
+        : top(other.top),
+          _size(other._size)
+    {
+    }
+
+    Stack(Stack&& other) noexcept
+        : top(other.top),
+          _size(other._size)
+    {
+    }
+
+    Stack& operator=(const Stack& other)
+    {
+        if (this == &other)
+            return *this;
+        top = other.top;
+        _size = other._size;
+        return *this;
+    }
+
+    Stack& operator=(Stack&& other) noexcept
+    {
+        if (this == &other)
+            return *this;
+        top = other.top;
+        _size = other._size;
+        return *this;
+    }
+};
+# 8 "/home/giovani/Documentos/Tareas/1S2025/EDD/Proyectos/scrabble/include/Reporte.h" 2
+
+class Reporte
+{
+private:
+    Queue<Jugador>& jugadores;
+    Stack<std::string>& palabras_jugadas;
+    LinkedList<std::string>& str_no_encontradas;
+
+
+    void ordenar();
+    static void swap(Jugador& p1, Jugador& p2) noexcept;
+    static void bubble_sort(Jugador arr[], int n);
+
+    void imprimir_palabras_jugadas();
+    void imprimir_palabras_no_encontradas();
+
+public:
+    explicit Reporte(Queue<Jugador>& jugadores, Stack<std::string>& str_jugadas,
+                     LinkedList<std::string>& str_no_encontradas);
+    Reporte() = delete;
+    void setQueue(Queue<Jugador>& p);
+    void imprimirReporte();
+};
+
+inline void Reporte::ordenar()
+{
+    const int len = this->jugadores.size();
+    std::cout << "-----> " << len << std::endl;
+    auto* arr = new Jugador[len];
+
+    for (int i = 0; i < len; ++i)
+    {
+        arr[i] = jugadores.dequeue();
+    }
+
+    bubble_sort(arr, len);
+
+    for (int i = 0; i < len; ++i)
+    {
+        jugadores.enqueue(arr[i]);
+    }
+
+    delete[] arr;
+}
+
+inline void Reporte::swap(Jugador& p1, Jugador& p2) noexcept
+{
+    auto aux = p1;
+    p1 = p2;
+    p2 = aux;
+}
+
+inline void Reporte::bubble_sort(Jugador arr[], int n)
+{
+    for (int i = 0; i < n - 1; ++i)
+    {
+        for (int j = 0; j < n - i - 1; ++j)
+        {
+            if (arr[j].obtener_puntos() > arr[j + 1].obtener_puntos())
+            {
+                swap(arr[j], arr[j + 1]);
+            }
+        }
+    }
+}
+
+inline void Reporte::imprimir_palabras_jugadas()
+{
+    std::cout << "PALABRAS ENCONTRADAS" << std::endl;
+    const int len = this->palabras_jugadas.size();
+    for (int i = 0; i < len; ++i)
+    {
+        std::cout << (i + 1) << ".- " << palabras_jugadas.pop() << std::endl;
+    }
+    std::cout << std::endl;
+}
+
+inline void Reporte::imprimir_palabras_no_encontradas()
+{
+    std::cout << "PALABRAS NO ENCONTRADAS" << std::endl;
+    const int len = this->str_no_encontradas.size();
+    for (int i = 0; i < len; ++i)
+    {
+        std::cout << (i + 1) << ".- " << str_no_encontradas.search(i) << std::endl;
+    }
+    std::cout << std::endl;
+}
+
+inline Reporte::Reporte(Queue<Jugador>& jugadores, Stack<std::string>& str_jugadas,
+                        LinkedList<std::string>& str_no_encontradas): jugadores(jugadores),
+                                                                      palabras_jugadas(str_jugadas),
+                                                                      str_no_encontradas(str_no_encontradas)
+{
+}
+
+
+inline void Reporte::setQueue(Queue<Jugador>& p)
+{
+    this->jugadores = p;
+}
+
+inline void Reporte::imprimirReporte()
+{
+    if (jugadores.empty())
+    {
+        std::cout << "--------No Reportes--------";
+    }
+    else
+    {
+        ordenar();
+        auto* temp = jugadores.getFront();
+        int index = 1;
+        while (temp != nullptr)
+        {
+            std::cout << index << ".- " << temp->value.obtener_nombre()
+                << "\t\tPuntos: " << temp->value.obtener_puntos() << ".\t\tMovimientos: " << temp->value.
+                obtener_movimientos() << std::endl;
+            temp = temp->next;
+            index++;
+        }
+
+        imprimir_palabras_jugadas();
+        imprimir_palabras_no_encontradas();
+    }
+}
+# 8 "/home/giovani/Documentos/Tareas/1S2025/EDD/Proyectos/scrabble/include/Game.h" 2
 # 1 "/home/giovani/Documentos/Tareas/1S2025/EDD/Proyectos/scrabble/include/Tablero.h" 1
 
 
@@ -105387,76 +105694,8 @@ public:
 
     bool ocurrencia(int fila, int columna, char sym);
 };
-# 8 "/home/giovani/Documentos/Tareas/1S2025/EDD/Proyectos/scrabble/include/Game.h" 2
-# 1 "/home/giovani/Documentos/Tareas/1S2025/EDD/Proyectos/scrabble/include/estructuras/Queue.h" 1
-
-
-
-
-
-
-
-template <typename T>
-class Queue
-{
-private:
-    struct Node
-    {
-        T value;
-        Node* next;
-        explicit Node(T val, Node* nxt = nullptr) : value(val), next(nxt) {}
-    } * front;
-
-    int _size;
-
-public:
-    Queue();
-
-    ~Queue();
-
-    void enqueue(T data);
-
-    T dequeue();
-
-    T peek();
-
-    void rotar();
-
-    [[nodiscard]] bool empty() const;
-
-    [[nodiscard]] int size() const;
-
-    Queue(const Queue& other)
-        : front(other.front),
-          _size(other._size)
-    {
-    }
-
-    Queue(Queue&& other) noexcept
-        : front(other.front),
-          _size(other._size)
-    {
-    }
-
-    Queue& operator=(const Queue& other)
-    {
-        if (this == &other)
-            return *this;
-        front = other.front;
-        _size = other._size;
-        return *this;
-    }
-
-    Queue& operator=(Queue&& other) noexcept
-    {
-        if (this == &other)
-            return *this;
-        front = other.front;
-        _size = other._size;
-        return *this;
-    }
-};
 # 9 "/home/giovani/Documentos/Tareas/1S2025/EDD/Proyectos/scrabble/include/Game.h" 2
+
 
 # 1 "/home/giovani/Documentos/Tareas/1S2025/EDD/Proyectos/scrabble/include/../src/estructuras/Queue.cpp" 1
 
@@ -105464,6 +105703,7 @@ public:
 
 # 1 "/home/giovani/Documentos/Tareas/1S2025/EDD/Proyectos/scrabble/include/../src/estructuras/../../include/estructuras/Queue.h" 1
 # 5 "/home/giovani/Documentos/Tareas/1S2025/EDD/Proyectos/scrabble/include/../src/estructuras/Queue.cpp" 2
+
 
 
 
@@ -105564,42 +105804,9 @@ void Queue<T>::rotar()
     auto* aux = this->dequeue();
     this->enqueue(aux);
 }
-# 11 "/home/giovani/Documentos/Tareas/1S2025/EDD/Proyectos/scrabble/include/Game.h" 2
+# 12 "/home/giovani/Documentos/Tareas/1S2025/EDD/Proyectos/scrabble/include/Game.h" 2
 # 1 "/home/giovani/Documentos/Tareas/1S2025/EDD/Proyectos/scrabble/include/../src/Archivo.cpp" 1
-# 1 "/usr/include/c++/14/iostream" 1 3
-# 36 "/usr/include/c++/14/iostream" 3
-       
-# 37 "/usr/include/c++/14/iostream" 3
 
-
-
-
-
-
-
-
-# 44 "/usr/include/c++/14/iostream" 3
-namespace std __attribute__ ((__visibility__ ("default")))
-{
-
-# 62 "/usr/include/c++/14/iostream" 3
-  extern istream cin;
-  extern ostream cout;
-  extern ostream cerr;
-  extern ostream clog;
-
-
-  extern wistream wcin;
-  extern wostream wcout;
-  extern wostream wcerr;
-  extern wostream wclog;
-# 82 "/usr/include/c++/14/iostream" 3
-  __extension__ __asm (".globl _ZSt21ios_base_library_initv");
-
-
-
-}
-# 2 "/home/giovani/Documentos/Tareas/1S2025/EDD/Proyectos/scrabble/include/../src/Archivo.cpp" 2
 # 1 "/usr/include/c++/14/fstream" 1 3
 # 36 "/usr/include/c++/14/fstream" 3
        
@@ -105630,6 +105837,8 @@ namespace std __attribute__ ((__visibility__ ("default")))
 # 36 "/usr/include/x86_64-linux-gnu/c++/14/bits/c++io.h" 2 3
 
 
+
+# 38 "/usr/include/x86_64-linux-gnu/c++/14/bits/c++io.h" 3
 namespace std __attribute__ ((__visibility__ ("default")))
 {
 
@@ -107586,70 +107795,8 @@ public:
 
     }
 };
-# 12 "/home/giovani/Documentos/Tareas/1S2025/EDD/Proyectos/scrabble/include/Game.h" 2
-# 1 "/home/giovani/Documentos/Tareas/1S2025/EDD/Proyectos/scrabble/include/estructuras/Stack.h" 1
-
-
-
-template <typename T>
-class Stack
-{
-private:
-    struct Nodo
-    {
-        T value;
-        Nodo* next;
-        explicit Nodo(T val, Nodo* nxt = nullptr) : value(val), next(nxt) {}
-    } * top;
-
-    int _size;
-
-public:
-    Stack();
-
-    ~Stack();
-
-    void push(T _data);
-
-    bool empty();
-
-    T pop();
-
-    T peek();
-
-    [[nodiscard]] int size() const;
-
-    Stack(const Stack& other)
-        : top(other.top),
-          _size(other._size)
-    {
-    }
-
-    Stack(Stack&& other) noexcept
-        : top(other.top),
-          _size(other._size)
-    {
-    }
-
-    Stack& operator=(const Stack& other)
-    {
-        if (this == &other)
-            return *this;
-        top = other.top;
-        _size = other._size;
-        return *this;
-    }
-
-    Stack& operator=(Stack&& other) noexcept
-    {
-        if (this == &other)
-            return *this;
-        top = other.top;
-        _size = other._size;
-        return *this;
-    }
-};
 # 13 "/home/giovani/Documentos/Tareas/1S2025/EDD/Proyectos/scrabble/include/Game.h" 2
+
 # 1 "/home/giovani/Documentos/Tareas/1S2025/EDD/Proyectos/scrabble/include/../src/estructuras/Stack.cpp" 1
 # 1 "/home/giovani/Documentos/Tareas/1S2025/EDD/Proyectos/scrabble/include/../src/estructuras/../../include/estructuras/Stack.h" 1
 # 2 "/home/giovani/Documentos/Tareas/1S2025/EDD/Proyectos/scrabble/include/../src/estructuras/Stack.cpp" 2
@@ -107747,24 +107894,25 @@ T Stack<T>::peek()
     }
     return this->top->value;
 }
-# 14 "/home/giovani/Documentos/Tareas/1S2025/EDD/Proyectos/scrabble/include/Game.h" 2
+# 15 "/home/giovani/Documentos/Tareas/1S2025/EDD/Proyectos/scrabble/include/Game.h" 2
 
 class Game
 {
 private:
+    int fichas_en_tablero = 0;
     Tablero tablero;
     Queue<Jugador> jugadores_en_juego_queue;
     LinkedList<std::string> lista_palabras;
     LinkedList<Ficha> fichas;
     Stack<std::string> palabras_jugadas;
-    int fichas_en_tablero = 0;
+    Reporte reporte;
     std::chrono::steady_clock::time_point inicioTurno;
 
+    void ver_reportes();
     void mostrar_menu();
     void ingresar_jugadores();
     void asignar_turnos();
     void iniciar_juego();
-    void cambiar_turno(Jugador& actual);
     static void ordenamiento_burbuja(LinkedList<std::string> palabras);
     void ver_pista();
     static void clearView();

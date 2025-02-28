@@ -25,4 +25,5 @@ add_executable(scrabble main.cpp
         src/utilidades/Utilidad.cpp
         src/estructuras/Stack.cpp
         include/estructuras/Stack.h
+        include/Reporte.h
 )

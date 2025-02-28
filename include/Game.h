@@ -4,6 +4,7 @@
 #include <chrono>
 
 #include "Jugador.h"
+#include "Reporte.h"
 #include "Tablero.h"
 #include "estructuras/Queue.h"
 #include "utilidades/Utilidad.h"
@@ -15,19 +16,20 @@
 class Game
 {
 private:
+    int fichas_en_tablero = 0;
     Tablero tablero;
     Queue<Jugador> jugadores_en_juego_queue;
     LinkedList<std::string> lista_palabras;
     LinkedList<Ficha> fichas;
     Stack<std::string> palabras_jugadas;
-    int fichas_en_tablero = 0;
+    Reporte reporte;
     std::chrono::steady_clock::time_point inicioTurno;
 
+    void ver_reportes();
     void mostrar_menu();
     void ingresar_jugadores();
     void asignar_turnos();
     void iniciar_juego();
-    void cambiar_turno(Jugador& actual);
     static void ordenamiento_burbuja(LinkedList<std::string> palabras);
     void ver_pista();
     static void clearView();

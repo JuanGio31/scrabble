@@ -13,7 +13,10 @@ private:
     {
         T value;
         Node* next;
-        explicit Node(T val, Node* nxt = nullptr) : value(val), next(nxt) {}
+
+        explicit Node(T val, Node* nxt = nullptr) : value(val), next(nxt)
+        {
+        }
     } * front;
 
     int _size;
@@ -34,6 +37,11 @@ public:
     [[nodiscard]] bool empty() const;
 
     [[nodiscard]] int size() const;
+
+    Node* getFront()
+    {
+        return this->front;
+    }
 
     Queue(const Queue& other)
         : front(other.front),
