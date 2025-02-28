@@ -6,6 +6,19 @@ SRC_DIR = src
 INC_DIR = include
 BIN_DIR = bin
 
+# Detectar sistema operativo
+ifeq ($(OS),Windows_NT)
+    MKDIR = mkdir
+    RM = del /Q /F
+    MKDIR_P = mkdir
+    SEP = \\
+else
+    MKDIR = mkdir -p
+    RM = rm -f
+    MKDIR_P = mkdir -p
+    SEP = /
+endif
+
 # Buscar todos los archivos .cpp en la raíz y subcarpetas de src/
 SRCS = $(wildcard *.cpp) $(wildcard $(SRC_DIR)/**/*.cpp)
 
@@ -15,22 +28,24 @@ OBJS = $(patsubst %.cpp, $(BIN_DIR)/%.o, $(SRCS))
 # Generar los nombres de los archivos de dependencias
 DEPFILES = $(OBJS:.o=.d)
 
-# Asegurar que bin/ exista antes de compilar
+# Regla principal
 $(TARGET): $(OBJS)
-$(TARGET): $(OBJS)
-	md bin 2> nul || exit 0
+	@$(MKDIR_P) $(dir $@)
 	$(CXX) $(CXXFLAGS) -o $(TARGET) $(OBJS)
 
 # Compilar archivos .cpp a .o dentro de bin/
 $(BIN_DIR)/%.o: %.cpp
-	md $(dir $@) 2> nul || exit 0
+	@$(MKDIR_P) $(dir $@)
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 # Limpiar los archivos compilados
 clean:
-	if exist bin ( rmdir /s /q bin )
+	$(RM) $(subst /,$(SEP),$(TARGET))
+	$(RM) $(subst /,$(SEP),$(OBJS))
+	$(RM) $(subst /,$(SEP),$(DEPFILES))
 
 # Regla para recompilar desde cero
+.PHONY: all clean
 all: clean $(TARGET)
 
 # Incluir archivos de dependencias

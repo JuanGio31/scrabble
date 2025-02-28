@@ -410,5 +410,6 @@ Game::Game(): reporte(jugadores_en_juego_queue, palabras_jugadas, lista_palabras
 
 void Game::ver_reportes()
 {
+    std::cout << "\n\nReporte." << std::endl;
     this->reporte.imprimirReporte();
 }
