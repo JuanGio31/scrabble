@@ -1,10 +1,7 @@
 #ifndef JUGADOR_H
 #define JUGADOR_H
-
-#include <string>
 #include "Ficha.h"
 #include "estructuras/LinkedList.h"
-#include "../src/estructuras/LinkedList.cpp"
 
 class Jugador
 {
@@ -33,4 +30,6 @@ public:
     void insertar(Ficha ficha);
     [[nodiscard]] int obtener_num_fichas_restantes() const;
 };
+
+#include "../src/Jugador.tpp"
 #endif // JUGADOR_H

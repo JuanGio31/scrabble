@@ -4,26 +4,26 @@ project(scrabble)
 set(CMAKE_CXX_STANDARD 20)
 
 add_executable(scrabble main.cpp
-        src/Casilla.cpp
+        src/Casilla.tpp
         include/Casilla.h
-        src/Tablero.cpp
+        src/Tablero.tpp
         include/Tablero.h
-        src/Ficha.cpp
+        src/Ficha.tpp
         include/Ficha.h
-        src/Jugador.cpp
+        src/Jugador.tpp
         include/Jugador.h
-        src/ManejadorFichas.cpp
+        src/ManejadorFichas.tpp
         include/ManejadorFichas.h
-        src/Archivo.cpp
-        src/Game.cpp
+        src/Game.tpp
         include/Game.h
         include/estructuras/Queue.h
-        src/estructuras/Queue.cpp
+        src/estructuras/Queue.tpp
         include/estructuras/LinkedList.h
-        src/estructuras/LinkedList.cpp
+        src/estructuras/LinkedList.tpp
         include/utilidades/Utilidad.h
-        src/utilidades/Utilidad.cpp
-        src/estructuras/Stack.cpp
+        src/utilidades/Utilidad.tpp
+        src/estructuras/Stack.tpp
         include/estructuras/Stack.h
         include/Reporte.h
+        include/Archivo.h
 )

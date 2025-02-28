@@ -1,5 +1,6 @@
 #ifndef CASILLA_H
 #define CASILLA_H
+
 #include "Ficha.h"
 
 class Casilla
@@ -20,6 +21,7 @@ public:
     void setFicha(char _sym, int pts);
 
     [[nodiscard]] int obtener_puntos() const;
-
 };
+
+#include "../src/Casilla.tpp"
 #endif //CASILLA_H

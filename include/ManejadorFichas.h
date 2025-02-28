@@ -1,11 +1,6 @@
 #ifndef MANEJADORFICHAS_H
 #define MANEJADORFICHAS_H
 
-#include "Ficha.h"
-#include "Jugador.h"
-#include "estructuras/LinkedList.h"
-#include "estructuras/Queue.h"
-
 class ManejadorFichas
 {
 private:
@@ -24,4 +19,6 @@ public:
 
     void repartir() const;
 };
+
+#include "../src/ManejadorFichas.tpp"
 #endif //MANEJADORFICHAS_H

@@ -32,7 +32,6 @@ public:
 inline void Reporte::ordenar()
 {
     const int len = this->jugadores.size();
-    std::cout << "-----> " << len << std::endl;
     auto* arr = new Jugador[len];
 
     for (int i = 0; i < len; ++i)
@@ -63,7 +62,7 @@ inline void Reporte::bubble_sort(Jugador arr[], int n)
     {
         for (int j = 0; j < n - i - 1; ++j)
         {
-            if (arr[j].obtener_puntos() > arr[j + 1].obtener_puntos())
+            if (arr[j].obtener_puntos() < arr[j + 1].obtener_puntos())
             {
                 swap(arr[j], arr[j + 1]);
             }

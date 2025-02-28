@@ -9,7 +9,10 @@ private:
     {
         T value;
         Nodo* next;
-        explicit Nodo(T val, Nodo* nxt = nullptr) : value(val), next(nxt) {}
+
+        explicit Nodo(T val, Nodo* nxt = nullptr) : value(val), next(nxt)
+        {
+        }
     } * top;
 
     int _size;
@@ -60,4 +63,5 @@ public:
     }
 };
 
+#include "../../src/estructuras/Stack.tpp"
 #endif //STACK_H

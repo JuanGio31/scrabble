@@ -3,15 +3,11 @@
 
 #include <chrono>
 
-#include "Jugador.h"
 #include "Reporte.h"
 #include "Tablero.h"
+#include "estructuras/LinkedList.h"
 #include "estructuras/Queue.h"
-#include "utilidades/Utilidad.h"
-#include "../src/estructuras/Queue.cpp"
-#include "../src/Archivo.cpp"
 #include "estructuras/Stack.h"
-#include "../src/estructuras/Stack.cpp"
 
 class Game
 {
@@ -46,4 +42,6 @@ public:
     Game();
     void play();
 };
+
+#include "../src/Game.tpp"
 #endif // GAME_H

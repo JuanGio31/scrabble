@@ -2,7 +2,6 @@
 #define TABLERO_H
 
 #include "Casilla.h"
-#include "utilidades/Utilidad.h"
 
 class Tablero
 {
@@ -16,7 +15,7 @@ private:
 public:
     static constexpr int FILAS = 15;
     static constexpr int COLUMNAS = 15;
-    Casilla* casillas[FILAS][COLUMNAS];
+    Casilla* casillas[FILAS][COLUMNAS]{};
 
     Tablero();
 
@@ -28,6 +27,8 @@ public:
 
     void colocar(int fila, int columna, char sym, int pts) const;
 
-    bool ocurrencia(int fila, int columna, char sym);
+    bool ocurrencia(int fila, int columna, char sym) const;
 };
+
+#include "../src/Tablero.tpp"
 #endif //TABLERO_H

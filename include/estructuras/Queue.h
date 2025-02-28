@@ -74,4 +74,5 @@ public:
     }
 };
 
+#include "../../src/estructuras/Queue.tpp"
 #endif //QUEUE_H

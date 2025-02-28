@@ -27,4 +27,6 @@ public:
         return puntos < otro.puntos;
     }
 };
+
+#include "../src/Ficha.tpp"
 #endif //FICHA_H

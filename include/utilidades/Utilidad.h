@@ -15,5 +15,5 @@ public:
     static std::string eliminar_espacios(const std::string& cadena);
 };
 
-
+#include "../../src/utilidades/Utilidad.tpp"
 #endif //RANDOMGENERATOR_H

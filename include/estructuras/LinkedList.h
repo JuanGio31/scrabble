@@ -118,5 +118,5 @@ public:
         return *this;
     }
 };
-
+#include "../../src/estructuras/LinkedList.tpp"
 #endif //LINKEDLIST_H
