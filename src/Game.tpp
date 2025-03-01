@@ -143,8 +143,11 @@ void Game::iniciar_juego()
 {
     ingresar_jugadores();
     clearView();
-    Archivo arc("/home/giovani/Documentos/Tareas/1S2025/EDD/Proyectos/scrabble/prueba.csv");
-    //lista_palabras = arc.leer_archivo();
+
+    std::string path;
+    std::cout << "Ingresa el PATH del archivo csv >>> ";
+    std::cin >> path;
+    Archivo arc(path);
     arc.leer_archivo(&lista_palabras);
     ManejadorFichas manejador_fichas(lista_palabras, fichas, jugadores_en_juego_queue);
     manejador_fichas.repartir();
