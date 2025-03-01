@@ -167,7 +167,6 @@ void Game::iniciar_juego()
     lista_palabras.bubble_sort();
     ManejadorFichas manejador_fichas(lista_palabras, fichas, jugadores_en_juego_queue);
     manejador_fichas.repartir();
-    ordenamiento_burbuja(lista_palabras);
 
     const int palabras_len = lista_palabras.size();
     const int totalFichas = fichas.size();

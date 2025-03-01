@@ -26,7 +26,6 @@ private:
     void ingresar_jugadores();
     void asignar_turnos();
     void iniciar_juego();
-    static void ordenamiento_burbuja(LinkedList<std::string> palabras);
     void ver_pista();
     static void clearView();
     void colocarFicha(int y, int x, int index, Jugador& actual);
