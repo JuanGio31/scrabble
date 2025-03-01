@@ -1,8 +1,0 @@
-[
-{
-  "directory": "/home/giovani/Documentos/Tareas/1S2025/EDD/Proyectos/scrabble/build",
-  "command": "/usr/bin/c++   -g -std=gnu++20 -o CMakeFiles/scrabble.dir/main.cpp.o -c /home/giovani/Documentos/Tareas/1S2025/EDD/Proyectos/scrabble/main.cpp",
-  "file": "/home/giovani/Documentos/Tareas/1S2025/EDD/Proyectos/scrabble/main.cpp",
-  "output": "CMakeFiles/scrabble.dir/main.cpp.o"
-}
-]

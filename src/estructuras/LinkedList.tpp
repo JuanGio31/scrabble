@@ -223,87 +223,40 @@ bool LinkedList<T>::deleteAt(int index)
     return true;
 }
 
-
+/**
+ * Ordenamientio burbuja
+ * Complejidad O(n^2)
+ */
 template <typename T>
-typename LinkedList<T>::Node* LinkedList<T>::obtenerCola(Node* _head)
+void LinkedList<T>::bubble_sort()
 {
-    while (_head && _head->next)
+    // la lista ya esta ordenada si solo tiene un elemento
+    if (head == nullptr || head->next == nullptr)
     {
-        _head = _head->next;
-    }
-    return _head;
-}
-
-template <typename T>
-typename LinkedList<T>::Node* LinkedList<T>::quick_sort_rec(Node* _head, Node* cola)
-{
-    if (!_head || _head == cola)
-    {
-        return _head;
+        return;
     }
 
-    Node *newHead = nullptr, *newCola = nullptr;
-    Node* pivote = particion(_head, cola, &newHead, &newCola);
+    bool cambio;
+    Node* actual;
+    Node* cola = nullptr;
 
-    if (newHead != pivote)
+    do
     {
-        auto* temp = newHead;
-        while (temp->next != pivote)
+        cambio = false;
+        actual = head;
+
+        while (actual->next != cola)
         {
-            temp = temp->next;
-        }
-        temp->next = nullptr;
-    }
-
-    pivote->next = quick_sort_rec(pivote->next, newCola);
-    return newHead;
-}
-
-template <typename T>
-typename LinkedList<T>::Node* LinkedList<T>::particion(Node* inicio, Node* fin, Node** newHead, Node** newCola)
-{
-    auto pivote = fin;
-    Node *prev = nullptr, *curr = inicio, *cola = pivote, *temp = nullptr;
-
-    *newHead = nullptr;
-    *newCola = pivote;
-
-    while (curr != pivote)
-    {
-        if (curr->value < pivote->value)
-        {
-            if (*newHead == nullptr)
+            // Usar el operador < para comparar elementos
+            if (actual->value > actual->next->value)
             {
-                *newHead = curr;
+                // Intercambiar valores
+                std::swap(actual->value, actual->next->value);
+                cambio = true;
             }
-            prev = curr;
-            curr = curr->next;
+            actual = actual->next;
         }
-        else
-        {
-            if (prev)
-            {
-                prev->next = curr->next;
-            }
-            temp = curr->next;
-            curr->next = nullptr;
-            cola->next = curr;
-            cola = curr;
-            curr = temp;
-        }
+        cola = actual; // El último nodo visitado ahora está ordenado
     }
-
-    if (*newHead == nullptr)
-    {
-        *newHead = pivote;
-    }
-    *newCola = cola;
-
-    return pivote;
-}
-
-template <typename T>
-void LinkedList<T>::quick_sort()
-{
-    this->head = quick_sort_rec(this->head, LinkedList<T>::obtenerCola(this->head));
+    while (cambio);
 }

@@ -1,3 +1,0 @@
-/home/giovani/Documentos/Tareas/1S2025/EDD/Proyectos/scrabble/cmake-build-debug-coverage/CMakeFiles/scrabble.dir
-/home/giovani/Documentos/Tareas/1S2025/EDD/Proyectos/scrabble/cmake-build-debug-coverage/CMakeFiles/edit_cache.dir
-/home/giovani/Documentos/Tareas/1S2025/EDD/Proyectos/scrabble/cmake-build-debug-coverage/CMakeFiles/rebuild_cache.dir

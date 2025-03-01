@@ -22,9 +22,15 @@ public:
     //comparacion de objetos
     //sobrecarga de operador <, para facilitar la comparacion
     //de los atributos
-    bool operator<(const Ficha& otro) const
+    bool operator>(const Ficha& otro) const
     {
-        return puntos < otro.puntos;
+        return puntos > otro.puntos;
+    }
+
+    friend std::ostream& operator<<(std::ostream& os, const Ficha& ficha)
+    {
+        os << ficha.puntos;
+        return os;
     }
 };
 

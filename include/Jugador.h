@@ -25,7 +25,7 @@ public:
     Ficha obtener_ficha(int index);
     void mostrar_fichas_disponibles();
     void eliminar(int index);
-
+    LinkedList<Ficha> get_lista_fichas();
     void ordenar();
     void insertar(Ficha ficha);
     [[nodiscard]] int obtener_num_fichas_restantes() const;

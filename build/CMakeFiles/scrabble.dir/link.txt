@@ -1,1 +1,0 @@
-/usr/bin/c++ -g -Wl,--dependency-file=CMakeFiles/scrabble.dir/link.d CMakeFiles/scrabble.dir/main.cpp.o -o scrabble

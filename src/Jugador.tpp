@@ -70,7 +70,7 @@ inline void Jugador::eliminar(const int index)
 
 inline void Jugador::ordenar()
 {
-    this->lista_fichas.quick_sort();
+    //this->lista_fichas.quick_sort();
 }
 
 inline Ficha Jugador::obtener_ficha(const int index)
@@ -124,4 +124,9 @@ inline void Jugador::insertar(Ficha ficha)
 inline int Jugador::obtener_num_fichas_restantes() const
 {
     return this->lista_fichas.size();
+}
+
+inline LinkedList<Ficha> Jugador::get_lista_fichas()
+{
+    return this->lista_fichas;
 }

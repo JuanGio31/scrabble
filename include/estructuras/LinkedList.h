@@ -21,16 +21,12 @@ private:
 
     int _size;
 
-    static Node* obtenerCola(Node* _head);
-    static Node* quick_sort_rec(Node* _head, Node* cola);
-    static Node* particion(Node* inicio, Node* fin, Node** newHead, Node** newCola);
-
 public:
     LinkedList();
 
     ~LinkedList();
 
-    void quick_sort();
+    void bubble_sort();
 
     void insertAtHead(T data);
 

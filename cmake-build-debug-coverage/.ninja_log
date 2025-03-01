@@ -1,7 +1,0 @@
-# ninja log v6
-1	209	1740790369009683961	CMakeFiles/scrabble.dir/main.cpp.o.ddi	672ae30c7ec53c16
-209	215	1740790369221694300	CMakeFiles/scrabble.dir/CXX.dd	ae7cb41c33d914a6
-209	215	1740790369221694300	/home/giovani/Documentos/Tareas/1S2025/EDD/Proyectos/scrabble/cmake-build-debug-coverage/CMakeFiles/scrabble.dir/CXXModules.json	ae7cb41c33d914a6
-209	215	1740790369221694300	CMakeFiles/scrabble.dir/main.cpp.o.modmap	ae7cb41c33d914a6
-215	2783	1740790369225694495	CMakeFiles/scrabble.dir/main.cpp.o	28b5474629bf7217
-2784	2879	1740790371793819732	scrabble	d1eada937703d549

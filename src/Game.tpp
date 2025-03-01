@@ -77,7 +77,12 @@ void Game::mostrar_menu()
     }
 }
 
-//funciona
+
+/**
+ * Metodo para ingresar jugadores al juego, y encolarlos en una estructura(Cola)
+ * Complejidad O(n), n es el numero de jugadores. ya que solo se aceptan numeros mayores a 1,
+ * la complejidad en el mejor de los casos será O(2). Y en el pero de los casos O(infinito) o O(2,147,483,647)
+ */
 void Game::ingresar_jugadores()
 {
     int numeroJugadores = -1;
@@ -86,6 +91,7 @@ void Game::ingresar_jugadores()
         std::cout << "Ingrese la cantidad de jugadores >>> ";
         std::cin >> numeroJugadores;
 
+        //validar si la entrada es un entero
         if (std::cin.fail())
         {
             std::cin.clear();
@@ -97,29 +103,37 @@ void Game::ingresar_jugadores()
         std::cout << "!El numero de jugadores debe ser como mínimo de 2¡" << std::endl;
     }
 
+    //Ingresar el nombre de los jugadores
     int aux = 0;
     while (aux < numeroJugadores)
     {
         std::string nombre = " ";
         std::cout << "Ingrese el nombre de su jugador >>> ";
         std::cin >> nombre;
-        jugadores_en_juego_queue.enqueue(Jugador(nombre));
+        jugadores_en_juego_queue.enqueue(Jugador(nombre)); // O(1)
         aux++;
     }
     asignar_turnos();
 }
 
-//funciona
+/**
+ * Metodo para asignar turnos a los jugadores de manera aleatoria.
+ * El algoritmo depende de cuantos elementos se encuentran en la cola.
+ * Complejidad: O(n)
+ */
 void Game::asignar_turnos()
 {
     const int n = jugadores_en_juego_queue.size();
     auto* arr = new Jugador[n];
+
+    // O(n)
     for (int i = 0; i < n; ++i)
     {
-        arr[i] = jugadores_en_juego_queue.dequeue();
+        arr[i] = jugadores_en_juego_queue.dequeue(); //O(1)
     }
 
-    //Implementar el algoritmo de Fisher-Yates para mezclar el array
+    //O(n)
+    //Implementar el algoritmo de Fisher-Yates para mezclar el array. swap
     for (int i = n - 1; i > 0; i--)
     {
         int j = Utilidad::getRandomInt(0, i);
@@ -129,10 +143,11 @@ void Game::asignar_turnos()
         arr[j] = temp;
     }
 
-    //reinsercion de los elementos mezclados en la cola.
+    //reencolar los elementos mezclados en la cola.
+    // O(n)
     for (int i = 0; i < n; i++)
     {
-        jugadores_en_juego_queue.enqueue(arr[i]);
+        jugadores_en_juego_queue.enqueue(arr[i]); //O(1)
     }
 
     //liberar la memoria del arreglo
@@ -149,6 +164,7 @@ void Game::iniciar_juego()
     std::cin >> path;
     Archivo arc(path);
     arc.leer_archivo(&lista_palabras);
+    lista_palabras.bubble_sort();
     ManejadorFichas manejador_fichas(lista_palabras, fichas, jugadores_en_juego_queue);
     manejador_fichas.repartir();
     ordenamiento_burbuja(lista_palabras);
@@ -237,14 +253,14 @@ void Game::colocarFicha(const int y, const int x, const int index, Jugador& actu
             x - 1,
             aux.obtenerLetra(),
             aux.obtenerPuntos());
-        actual.eliminar(index - 1); //eliminar ficha del la lista del jugador
-        actual.aumentar_movimiento(); //incrementar el numero de movimientos
-        analizar(actual); //analizar palabras, sumar pts si se encuentra una palabra.
+        actual.eliminar(index - 1); //eliminar ficha del la lista del jugador. O(1)
+        actual.aumentar_movimiento(); //incrementar el numero de movimientos O(1)
+        analizar(actual); //analizar palabras, sumar pts si se encuentra una palabra. O(n)
         fichas_en_tablero++; //incrementar el numero de fichas en el tablero
 
         //cambiar de jugador
-        jugadores_en_juego_queue.enqueue(actual);
-        actual = jugadores_en_juego_queue.dequeue();
+        jugadores_en_juego_queue.enqueue(actual); //O(1)
+        actual = jugadores_en_juego_queue.dequeue(); //O(1)
 
         clearView();
     }
@@ -252,40 +268,6 @@ void Game::colocarFicha(const int y, const int x, const int index, Jugador& actu
     {
         std::cout << std::endl << "Movimiento no valido!" << std::endl;
     }
-}
-
-//sin probar
-void Game::ordenamiento_burbuja(LinkedList<std::string> palabras)
-{
-    const int n = palabras.size();
-    //crear una lista temporal para almacenar los elementos de la LinkedList.
-    auto* lista = new std::string[n];
-    for (int i = 0; i < n; ++i)
-    {
-        lista[i] = palabras.search(0);
-        palabras.deleteAtHead();
-    }
-
-    for (int i = 0; i < n - 1; ++i)
-    {
-        for (int j = 0; j < n - i - 1; ++j)
-        {
-            if (lista[j] > lista[j + 1])
-            {
-                //intercambiar elementos
-                std::string aux = lista[j];
-                lista[j] = lista[j + 1];
-                lista[j + 1] = aux;
-            }
-        }
-    }
-
-    //insertar los elementos ordenados a la lista original
-    for (int i = 0; i < n; ++i)
-    {
-        palabras.insertAtEnd(lista[i]);
-    }
-    delete [] lista;
 }
 
 void Game::ver_pista()
@@ -320,6 +302,14 @@ void Game::analizar(Jugador& actual)
     }
 }
 
+/**
+ * Funcion que sirve para obtener el numero de puntos al formar una palabra con las fichas.
+ *
+ * Complejidad O(n)
+ * @param _tablero Tablero
+ * @param palabra string
+ * @return int
+ */
 int Game::palabra_encontrada(Tablero& _tablero, const std::string& palabra)
 {
     if (busqueda_horizontal(_tablero, palabra) != -1) return busqueda_horizontal(_tablero, palabra);
@@ -329,6 +319,17 @@ int Game::palabra_encontrada(Tablero& _tablero, const std::string& palabra)
     return -1;
 }
 
+/**
+ * Funcion que sirve para analizar las posibles palabras formadas de
+ * manera horizontal, es decir las que se leen de izquierda a derecha,
+ * devolvera la suma de puntos de las fichas,
+ * y -1 en caso de que no hayan coincidencias
+ *
+ * Complejidad Algoritmica: O(n) * O(n) -> O(n^2) ya que es una matriz cuadrada.
+ * @param _tablero Tablero
+ * @param palabra string
+ * @return int
+ */
 int Game::busqueda_horizontal(Tablero& _tablero, const std::string& palabra)
 {
     int puntos = 0;
@@ -370,14 +371,27 @@ int Game::busqueda_horizontal(Tablero& _tablero, const std::string& palabra)
     return -1;
 }
 
+/**
+ * Funcion que sirve para analizar las posibles palabras formadas de
+ * manera vertical, es decir las que se leen de arriba a abajo,
+ * devolvera la suma de puntos de las fichas,
+ * y -1 en caso de que no hayan coincidencias
+ *
+ * Complejidad Algoritmica: O(n) * O(n) -> O(n^2) ya que es una matriz cuadrada.
+ * n es el tamanio de la matriz.
+ * @param _tablero Tablero
+ * @param palabra string
+ * @return int
+ */
 int Game::busqueda_vertical(Tablero& _tablero, const std::string& palabra)
 {
-    int puntos = 0;
+    int puntos = 0; //O(1)
     size_t temp = 1;
+    // O(n)
     for (size_t columna = 0; columna < Tablero::COLUMNAS; ++columna)
     {
         size_t fila = 0, contador = 0;
-        while (fila < Tablero::FILAS)
+        while (fila < Tablero::FILAS) //O(n)
         {
             if (contador == 0 && fila > Tablero::FILAS - palabra.length())
             {
@@ -407,10 +421,16 @@ int Game::busqueda_vertical(Tablero& _tablero, const std::string& palabra)
     return -1;
 }
 
+/**
+ * Constructor
+ */
 Game::Game(): reporte(jugadores_en_juego_queue, palabras_jugadas, lista_palabras)
 {
 }
 
+/**
+ * Metodo para mostrar los reportes al final del juego
+ */
 void Game::ver_reportes()
 {
     std::cout << "\n\nReporte." << std::endl;

@@ -9,7 +9,7 @@ private:
     Queue<Jugador>& jugadores_en_juego;
 
     void generarFichas() const;
-    void ordenarFichas() const;
+    //void ordenarFichas() const;
 
 public:
     ManejadorFichas(
